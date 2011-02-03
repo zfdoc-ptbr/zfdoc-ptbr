@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: PDF.php 298508 2010-04-25 14:09:50Z bjori $ */
 
 class Package_PHP_PDF extends Package_Generic_PDF {    
     protected $elementmap = array(

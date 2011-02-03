@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: PDF.php 293260 2010-01-08 10:41:19Z rquadling $ */
 
 abstract class Format_Abstract_PDF extends Format {
     protected $pdfDoc;

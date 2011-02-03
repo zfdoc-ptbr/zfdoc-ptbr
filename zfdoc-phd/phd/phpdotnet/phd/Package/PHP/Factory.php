@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Factory.php 303138 2010-09-07 15:34:29Z moacir $ */
 
 class Package_PHP_Factory extends Format_Factory {
     private $formats = array(
@@ -14,6 +14,7 @@ class Package_PHP_Factory extends Format_Factory {
         'kdevelop'      => 'Package_PHP_KDevelop',
         'chm'           => 'Package_PHP_CHM',
         'tocfeed'       => 'Package_PHP_TocFeed',
+        'epub'          => 'Package_PHP_Epub',
     );
     
     public function __construct() {

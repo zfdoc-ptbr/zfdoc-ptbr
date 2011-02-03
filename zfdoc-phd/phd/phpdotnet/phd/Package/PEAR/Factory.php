@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Factory.php 289584 2009-10-12 18:14:55Z cweiske $ */
 
 class Package_PEAR_Factory extends Format_Factory {
     private $formats = array(

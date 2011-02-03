@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/*  $Id$ */
+/*  $Id: Reader.php 286839 2009-08-05 12:59:12Z moacir $ */
 //6271
 
 class Reader extends \XMLReader

@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Web.php 302090 2010-08-11 02:49:40Z moacir $ */
 
 /**
  * Renders the pear documentation visible on the PEAR website.
@@ -19,7 +19,7 @@ class Package_PEAR_Web extends Package_PEAR_ChunkedXHTML
     {
         parent::__construct();
         $this->registerFormatName('PEAR-Web');
-        $this->setExt(Config::ext() === null ? 'php' : Config::ext());
+        $this->setExt(Config::ext() === null ? '.php' : Config::ext());
     }
 
     public function __destruct()

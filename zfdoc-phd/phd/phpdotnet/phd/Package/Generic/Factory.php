@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Factory.php 298715 2010-04-28 18:49:33Z bjori $ */
 
 class Package_Generic_Factory extends Format_Factory
 {
@@ -15,6 +15,7 @@ class Package_Generic_Factory extends Format_Factory
         'manpage'       => 'Package_Generic_Manpage',
         'zfpackage'     => 'Package_Generic_ZFPackageChunkedXHTML',
         'zfonline'      => 'Package_Generic_ZFOnlineChunkedXHTML',
+        'zfdoc'         => 'Package_Generic_ZFDocChunkedXHTML',
     );
 
     public function __construct()

@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: XHTML.php 306879 2010-12-30 21:19:00Z moacir $ */
 
 abstract class Format_Abstract_XHTML extends Format {
     public $role = false;
@@ -22,7 +22,7 @@ abstract class Format_Abstract_XHTML extends Format {
             $idstr = "";
             if (isset($attrs[Reader::XMLNS_XML]["id"])) {
                 $id = $attrs[Reader::XMLNS_XML]["id"];
-                $idstr = ' id="' .$id. '" name="' .$id. '"';
+                $idstr = ' id="' .$id. '"';
             }
             return '<' .$tag. ' class="' .$name. '"' . $idstr . ($props["empty"] ? '/' : "") . '>';
         }

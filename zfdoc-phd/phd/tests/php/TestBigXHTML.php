@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: TestBigXHTML.php 287045 2009-08-10 16:29:41Z moacir $ */
 
 class TestBigXHTML extends Package_PHP_BigXHTML {
     public function update($event, $val = null) {

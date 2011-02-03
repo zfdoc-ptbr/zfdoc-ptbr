@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: XML.php 299096 2010-05-07 00:20:28Z moacir $ */
 
 class Package_IDE_XML extends Package_IDE_Base {
 

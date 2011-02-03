@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: XHTML.php 303758 2010-09-25 01:10:32Z moacir $ */
 
 abstract class Package_PEAR_XHTML extends Package_Generic_XHTML {
     private $myelementmap = array(
@@ -1084,7 +1084,7 @@ abstract class Package_PEAR_XHTML extends Package_Generic_XHTML {
                 
         if ($name == 'legalnotice') {
             if ($open) {
-                return '<div class="' . $name . '" ' . ($id ? "id=\"{$id}\"" : '') . '">';
+                return '<div class="' . $name . '" ' . ($id ? "id=\"{$id}\"" : '') . '>';
             }
         }
         return $open ? '<div class="'.$name.'" id="'.$id.'">' : "</div>\n"; 

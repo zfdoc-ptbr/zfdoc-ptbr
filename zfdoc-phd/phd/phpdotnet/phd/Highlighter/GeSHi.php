@@ -8,7 +8,7 @@
  * @package  PhD_GeSHi
  * @author   Christian Weiske <cweiske@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.php BSD Style
- * @version  SVN: $Id$
+ * @version  SVN: $Id: GeSHi.php 302828 2010-08-26 21:14:55Z cweiske $
  * @link     http://doc.php.net/phd/
  */
 namespace phpdotnet\phd;
@@ -30,7 +30,11 @@ require 'MediaWiki/geshi/geshi/geshi.php';
  * 2009. It will not work with geshi 1.1.x or 1.2.x.
  *
  * @example
- * phd -g 'phpdotnet\phd\Highlighter_GeSHi' -L en -P PEAR -f xhtml -o build/en -d .manual.xml
+ * Install geshi:
+ *  pear channel-discover mediawiki.googlecode.com/svn
+ *  pear install mediawiki/geshi
+ * Use it:
+ *  phd -g 'phpdotnet\phd\Highlighter_GeSHi' -L en -P PEAR -f xhtml -o build/en -d .manual.xml
  *
  * @category PhD
  * @package  PhD_GeSHi

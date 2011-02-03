@@ -8,7 +8,7 @@
  * @package  PhD_GeSHi11x
  * @author   Christian Weiske <cweiske@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.php BSD Style
- * @version  SVN: $Id$
+ * @version  SVN: $Id: GeSHi11x.php 293260 2010-01-08 10:41:19Z rquadling $
  * @link     http://doc.php.net/phd/
  */
 namespace phpdotnet\phd;

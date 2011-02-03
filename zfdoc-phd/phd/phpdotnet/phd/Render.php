@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Render.php 293170 2010-01-06 08:24:43Z bjori $ */
 
 class Render extends ObjectStorage
 {

@@ -2,7 +2,7 @@
 CALS Table rendering#003
 --FILE--
 <?php
-/*  $Id$ */
+/*  $Id: 003.phpt 275549 2009-02-11 05:08:17Z cweiske $ */
 
 require "include/PhDReader.class.php";
 require "include/PhDFormat.class.php";

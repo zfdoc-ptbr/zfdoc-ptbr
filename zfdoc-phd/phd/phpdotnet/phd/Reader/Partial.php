@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/*  $Id$ */
+/*  $Id: Partial.php 286893 2009-08-06 16:25:43Z moacir $ */
 
 class Reader_Partial extends Reader
 {

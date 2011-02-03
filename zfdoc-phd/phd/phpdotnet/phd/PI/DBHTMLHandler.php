@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: DBHTMLHandler.php 293260 2010-01-08 10:41:19Z rquadling $ */
 
 class PI_DBHTMLHandler extends PIHandler {
     private $attrs = array(

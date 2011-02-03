@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: TestChunkedXHTML.php 287045 2009-08-10 16:29:41Z moacir $ */
 
 class TestChunkedXHTML extends Package_PHP_ChunkedXHTML {
     public function update($event, $val = null) {

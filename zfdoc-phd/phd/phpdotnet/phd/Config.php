@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Config.php 302094 2010-08-11 04:29:56Z moacir $ */
 
 if (!defined("__INSTALLDIR__")) {
     define("__INSTALLDIR__", "@php_dir@" == "@"."php_dir@" ? dirname(dirname(__DIR__)) : "@php_dir@");

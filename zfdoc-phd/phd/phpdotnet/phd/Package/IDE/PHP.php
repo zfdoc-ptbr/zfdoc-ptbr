@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: PHP.php 298860 2010-05-01 20:44:30Z moacir $ */
 
 class Package_IDE_PHP extends Package_IDE_Base {
 

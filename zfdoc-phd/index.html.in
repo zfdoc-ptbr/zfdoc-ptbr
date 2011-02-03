@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>Zend Framework Manual</title>
-    <link href="manual/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/styles.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -12,14 +12,13 @@
 <h2>Programmer's Reference Guide</h2>
 <h3>Languages Available</h3>
 <ul>
-    <li><a href="manual/en/manual.html">English</a></li>
-    <li><a href="manual/de/manual.html">German</a></li>
-    <li><a href="manual/es/manual.html">Spanish</a></li>
-    <li><a href="manual/fr/manual.html">French</a></li>
-    <li><a href="manual/it/manual.html">Italian</a></li>
-    <li><a href="manual/ja/manual.html">Japanese</a></li>
-    <li><a href="manual/pt-br/manual.html">Brazilian Portuguese</a></li>
-    <li><a href="manual/ru/manual.html">Russian</a></li>
+    <li><a href="en/manual.html">English</a></li>
+    <li><a href="de/manual.html">German</a></li>
+    <li><a href="es/manual.html">Spanish</a></li>
+    <li><a href="fr/manual.html">French</a></li>
+    <li><a href="ja/manual.html">Japanese</a></li>
+    <li><a href="pt-br/manual.html">Brazilian Portuguese</a></li>
+    <li><a href="ru/manual.html">Russian</a></li>
 </ul>
 
 </body>

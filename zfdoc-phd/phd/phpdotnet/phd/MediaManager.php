@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: MediaManager.php 290248 2009-11-05 11:29:11Z rquadling $ */
 
 /**
 * Handles images (and other media objects) referenced in the docbook files.

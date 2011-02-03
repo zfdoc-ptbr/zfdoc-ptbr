@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Manpage.php 298719 2010-04-28 19:17:59Z bjori $ */
 
 class Package_Generic_Manpage extends Format_Abstract_Manpage {
     const OPEN_CHUNK    = 0x01; 

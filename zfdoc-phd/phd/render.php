@@ -1,20 +1,11 @@
 #!@php_bin@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: render.php 303192 2010-09-09 02:37:28Z moacir $ */
 
-// Local modifications
-define('__INSTALLDIR__', realpath(dirname(__FILE__)));
-
-$incPath = explode(PATH_SEPARATOR, get_include_path());
-if (in_array('.', $incPath)) {
-    $index = array_search('.', $incPath);
-    unset($incPath[$index], $index);
-}
-array_unshift($incPath, __INSTALLDIR__);
-array_unshift($incPath, '.');
-set_include_path(implode(PATH_SEPARATOR, $incPath));
-unset($incPath);
+// @php_dir@ gets replaced by pear with the install dir. use __DIR__ when 
+// running from SVN
+define("__INSTALLDIR__", "@php_dir@" == "@"."php_dir@" ? __DIR__ : "@php_dir@");
 
 require __INSTALLDIR__ . '/phpdotnet/phd/Autoloader.php';
 require __INSTALLDIR__ . '/phpdotnet/phd/functions.php';
@@ -32,7 +23,7 @@ if (file_exists("phd.config.php")) {
     Config::init(array());
 }
 
-BuildOptionsParser::getopt();
+Options_Parser::getopt();
 
 /* If no docbook file was passed, die */
 if (!is_dir(Config::xml_root()) || !is_file(Config::xml_file())) {

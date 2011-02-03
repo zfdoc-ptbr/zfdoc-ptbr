@@ -1,10 +1,11 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Factory.php 303192 2010-09-09 02:37:28Z moacir $ */
 
 abstract class Format_Factory {
     private $formats     = array();
     private $packageName = "";
+    private $optionsHandler = null;
 
     public final function getOutputFormats() {
         return array_keys($this->formats);
@@ -12,6 +13,14 @@ abstract class Format_Factory {
 
     public final function registerOutputFormats($formats) {
         $this->formats = $formats;
+    }
+
+    public final function getOptionsHandler() {
+        return $this->optionsHandler;
+    }
+
+    public final function registerOptionsHandler(Options_Interface $optionsHandler) {
+        $this->optionsHandler = $optionsHandler;
     }
 
     protected final function setPackageName($name) {

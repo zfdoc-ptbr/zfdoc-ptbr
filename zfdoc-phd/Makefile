@@ -9,10 +9,10 @@
 # obtain it through the world-wide-web, please send an email
 # to mauriciofauth@gmail.com so we can send you a copy immediately.
 #
-# @category	Documentation
-# @author	Maurício Meneghini Fauth <mauriciofauth@gmail.com>
-# @copyright	Copyright (c) 2011 Maurício Meneghini Fauth <mauriciofauth@gmail.com>
-# @license	http://www.opensource.org/licenses/bsd-license    New BSD License
+# @category     Documentation
+# @author       Maurício Meneghini Fauth <mauriciofauth@gmail.com>
+# @copyright    Copyright (c) 2011 Maurício Meneghini Fauth <mauriciofauth@gmail.com>
+# @license      http://www.opensource.org/licenses/bsd-license    New BSD License
 
 #
 # Makefile - build Zend Framework documentation with PhD
@@ -22,56 +22,48 @@
 #  clean - remove staged files.
 #
 
-LANG=en de es fr it ja pt-br ru
+LANG=en
+VERSION=1.11
 MANUAL_XML=manual.xml
-DOC_PATH=../trunk/documentation/manual
 
 all:	website
 
-html:	$(MANUAL_XML)
-	@rm -Rf ./output
-	@mkdir ./output
-	@for lang in $(LANG) ; \
-	do \
-	    echo "Executing sed on file ./temp/$$lang/$(MANUAL_XML)." ; \
-	    sed -ir -e 's/<index id="the.index" \/>//' "./temp/$$lang/$(MANUAL_XML)" ; \
-	    echo "Upgrading ./temp/$$lang/$(MANUAL_XML) to DocBook v5." ; \
-	    xsltproc --xinclude ./db4-upgrade.xsl ./temp/$$lang/$(MANUAL_XML) > ./temp/$$lang/manual-db5.xml ; \
-	    echo "Rendering $$lang manual." ; \
-	    php ./phd/render.php -x -g 'phpdotnet\phd\Highlighter_GeSHi' -f zfpackage -o ./output/$$lang -d ./temp/$$lang/manual-db5.xml ; \
-	done
-	@rm -Rf ./temp
-
-$(MANUAL_XML): $(DOC_PATH)/en
+$(MANUAL_XML): ../standard/branches/release-$(VERSION)/documentation/manual/en/$(MANUAL_XML).in
 	@rm -Rf ./temp
 	@mkdir ./temp
 	@echo "Copying lang files..."
-	@for lang in $(LANG) ; \
-	do \
-	    [ -d ./temp/$$lang ] || mkdir ./temp/$$lang ; \
-	    cp -Rf $(DOC_PATH)/en/figures ./temp/$$lang ; \
-	    cp -Rf $(DOC_PATH)/en/module_specs ./temp/$$lang ; \
-	    cp -Rf $(DOC_PATH)/en/ref ./temp/$$lang ; \
-	    cp -Rf $(DOC_PATH)/en/tutorials ./temp/$$lang/ ; \
-	    cp -Rf $(DOC_PATH)/$$lang ./temp/ ; \
-	    ( cd ./temp/$$lang && autoconf && ./configure && make -e $(MANUAL_XML) ) ; \
-	    echo "LANG=$$lang done." ; \
-	done
+	@mkdir ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../standard/branches/release-$(VERSION)/documentation/manual/en/figures ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../standard/branches/release-$(VERSION)/documentation/manual/en/module_specs ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../standard/branches/release-$(VERSION)/documentation/manual/en/ref ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../standard/branches/release-$(VERSION)/documentation/manual/en/tutorials ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../standard/branches/release-$(VERSION)/documentation/manual/$(LANG) ./temp
+	@cp -Rf ../standard/branches/release-$(VERSION)/documentation/manual/en ./temp
+	@( cd ./temp/$(LANG) && autoconf && ./configure && make -e $(MANUAL_XML) )
+	@echo "Executing sed on file ./temp/$(LANG)/$(MANUAL_XML)."
+	@sed -ir -e 's/<index id="the.index" \/>//' "./temp/$(LANG)/$(MANUAL_XML)"
+	@echo "Upgrading ./temp/$(LANG)/$(MANUAL_XML) to DocBook v5."
+	@xsltproc --xinclude ./db4-upgrade.xsl ./temp/$(LANG)/$(MANUAL_XML) > ./temp/$(LANG)/manual-db5.xml
+	@echo "Done."
+
+html:	$(MANUAL_XML)
+	@[ -d ./output ] || mkdir ./output
+	@echo "Rendering $(LANG) manual."
+	@php ./phd/render.php -x -f zfdoc -o ./output/html/$(VERSION)/$(LANG) -d ./temp/$(LANG)/manual-db5.xml
+	@rm -Rf ./temp
 
 website: html
-	@[ -d ./website ] || mkdir ./website
-	@mv -f ./output ./website/manual
-	@for lang in $(LANG) ; \
-	do \
-	    rm -f ./website/manual/$$lang/index.sqlite ; \
-	    cp -Rf ./website/manual/$$lang/zf-package-chunked-xhtml/* ./website/manual/$$lang ; \
-	    rm -Rf ./website/manual/$$lang/zf-package-chunked-xhtml ; \
-	done
-	@cp -f ./index.html.in ./website
-	@mv -f ./website/index.html.in ./website/index.html
-	@cp -Rf ./styles ./website/manual
+	@[ -d ./output/website ] || mkdir ./output/website
+	@cp -Rf ./output/html/$(VERSION) ./output/website
+	@rm -Rf ./output/html
+	@rm -f ./output/website/$(VERSION)/$(LANG)/index.sqlite
+	@cp -Rf ./output/website/$(VERSION)/$(LANG)/zf-doc-chunked-xhtml/* ./output/website/$(VERSION)/$(LANG)
+	@rm -Rf ./output/website/$(VERSION)/$(LANG)/zf-doc-chunked-xhtml
+	@cp -f ./index.html.in ./output/website/$(VERSION)
+	@mv -f ./output/website/$(VERSION)/index.html.in ./output/website/$(VERSION)/index.html
+	@[ -d ./output/website/$(VERSION)/css ] || cp -Rf ./css ./output/website/$(VERSION)
+	@[ -d ./output/website/$(VERSION)/js ] || cp -Rf ./js ./output/website/$(VERSION)
 
 clean:
 	@rm -Rf ./temp
 	@rm -Rf ./output
-	@rm -Rf ./website

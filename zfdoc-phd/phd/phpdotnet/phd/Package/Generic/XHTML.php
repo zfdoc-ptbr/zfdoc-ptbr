@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: XHTML.php 306906 2010-12-31 09:28:38Z bjori $ */
 
 abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
     private $myelementmap = array( /* {{{ */
@@ -100,7 +100,7 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
         'envar'                 => 'span',
         'errortype'             => 'span',
         'errorcode'             => 'span',
-        'example'               => 'format_div',
+        'example'               => 'format_example',
         'formalpara'            => 'p',
         'fieldsynopsis'         => array(
             /* DEFAULT */          'format_fieldsynopsis',
@@ -162,7 +162,7 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
         ),
         'interfacename'         => 'span',
         'exceptionname'         => 'span',
-        'option'                => 'span',
+        'option'                => 'format_option',
         'orderedlist'           => 'format_orderedlist',
         'para'                  => array(
             /* DEFAULT */          'p',
@@ -627,6 +627,18 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
         return "</a>";
     }
 
+    public function format_option($open, $name, $attrs) {
+        if ($open) {
+            if(!isset($attrs[Reader::XMLNS_DOCBOOK]["role"])) {
+                $attrs[Reader::XMLNS_DOCBOOK]["role"] = "unknown";
+            }
+            $this->role = $role = $attrs[Reader::XMLNS_DOCBOOK]["role"];
+            return '<strong class="' .$name.' ' .$role. '">';
+        }
+        $this->role = null;
+        return "</strong>\n";
+    }
+
     public function format_literal($open, $name, $attrs) {
         if ($open) {
             if (isset($attrs[Reader::XMLNS_DOCBOOK]["role"])) {
@@ -843,7 +855,15 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
                 $attrs[Reader::XMLNS_DOCBOOK]["role"] = "unknown";
             }
             $this->role = $role = $attrs[Reader::XMLNS_DOCBOOK]["role"];
-            return '<div class="' .$name.' ' .$role. '">';
+
+            if (isset($attrs[Reader::XMLNS_DOCBOOK]["id"])) {
+                $id = $attrs[Reader::XMLNS_DOCBOOK]["id"];
+            }
+            else {
+                $id = $name. "-" . $this->CURRENT_CHUNK . "-" . $role;
+            }
+
+            return '<div class="' .$name.' ' .$role. '" id="' . $id . '">';
         }
         $this->role = null;
         return "</div>\n";
@@ -1276,7 +1296,7 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
     }
     public function format_note($open, $name, $attrs, $props) {
         if ($open) {
-            return '<blockquote><p>'.$this->admonition_title("note", $props["lang"]). ': ';
+            return '<blockquote class="note"><p>'.$this->admonition_title("note", $props["lang"]). ': ';
         }
         return "</p></blockquote>";
     }
@@ -1285,6 +1305,17 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
             return '<b>';
         }
         return '</b><br />';
+    }
+    public function format_example($open, $name, $attrs, $props) {
+        static $n = 0;
+        if ($open) {
+            ++$n;
+            if (isset($props["id"])) {
+                return '<div class="' . $name . '" id="' . $props["id"] . '">';
+            }
+            return '<div class="' . $name . '" id="' . $this->getGeneratedExampleId($n-1) . '">';
+        }
+        return '</div>';
     }
     public function format_example_title($open, $name, $attrs, $props) {
         if ($props["empty"]) {
@@ -1347,7 +1378,11 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
     public function format_table($open, $name, $attrs, $props) {
         if ($open) {
             $this->cchunk["table"] = true;
-            return '<table class="doctable ' .$name. '">';
+            $idstr = '';
+            if (isset($attrs[Reader::XMLNS_XML]["id"])) {
+            	$idstr = ' id="' . $attrs[Reader::XMLNS_XML]["id"] . '"';
+            }
+            return '<table' . $idstr . ' class="doctable ' .$name. '">';
         }
         $this->cchunk["table"] = false;
         $str = "";
@@ -1535,7 +1570,7 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
         if ($open) {
             return "<p><b>";
         }
-        return "</p></b>";
+        return "</b></p>";
     }
 
    /**

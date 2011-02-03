@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Manpage.php 298715 2010-04-28 18:49:33Z bjori $ */
 
 abstract class Format_Abstract_Manpage extends Format {
     public $role = false;

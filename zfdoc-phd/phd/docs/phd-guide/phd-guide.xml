@@ -147,7 +147,7 @@ $ svn co http://svn.php.net/repository/phpdoc/modules/doc-en phpdoc
 
       <screen>
 <![CDATA[
-$ phd -d .manual.xml -P PHP
+$ phd -d doc-base/.manual.xml -P PHP
 ... status messages
 ]]>
       </screen>
@@ -259,7 +259,7 @@ Supported packages:
     </section>
 
     <section xml:id="render-phd-guide">
-      <title>Compile the PhD guide</title>
+      <title>Compiling the PhD guide</title>
 
       <para>The PhD guide is this manual you are reading currently. It lives
       in <acronym>PhD</acronym>'s SVN repository under
@@ -288,7 +288,87 @@ $ phd -f bigxhtml -d phd-guide.xml
       <para>That's all to say. This way you can render your own docbook files,
       too.</para>
     </section>
+
+
+    <section xml:id="render-custom">
+      <title>Customizing the rendering results</title>
+
+      <para>PhD lets you specify a number of options to customize the
+      generated documentation files. The following sections describe
+      some of them.</para>
+
+      <section xml:id="render-custom-highlighter">
+	<title>Source code highlighter</title>
+
+	<para>Part of the documentation of programming languages
+	is source code examples. PhD is able to colorize the source
+	code of many types of source code with the help of
+	<emphasis>highlighters</emphasis>.</para>
+
+	<para>To utilize syntax highlighting, your opening
+	<literal>&lt;programlisting&gt;</literal> tags need a
+	<literal>role</literal> attribute describing the type
+	of source code. Examples are <literal>php</literal>,
+	<literal>html</literal> and <literal>python</literal>.</para>
+
+	<note>
+	  <para>PhD currently only highlights the code if it is embedded
+	  in a <literal>CDATA</literal> section.</para>
+	</note>
+
+	<example>
+	  <title>A programlisting tag with a role</title>
+	  <programlisting role="xml"><![CDATA[<programlisting role="php"><![CDATA[
+<?php
+echo "Hello world!";
+?>
+]]>]]&gt;&lt;/programlisting&gt;
+	  </programlisting>
+	</example>
+
+	<para>By default, PhD uses the source code highlighter that
+	is built into PHP itself. It is only able to highlight PHP code
+	and nothing else.</para>
+
+	<para>If your documentation contains other types of source code
+	or markup, like XML, HTML, Javascript or any other language,
+	you should try the
+	<link xlink:href="http://qbnz.com/highlighter/">GeSHi</link>
+	highlighter that is shipped with PhD:</para>
+
+	<orderedlist>
+	  <listitem>
+	   <para>
+	    Install GeSHi from the MediaWiki PEAR channel:
+	   </para>
+	   <screen><![CDATA[$ pear channel-discover mediawiki.googlecode.com/svn
+$ pear install mediawiki/geshi]]></screen>
+	  </listitem>
+
+	  <listitem>
+	   <para>
+	    Use the GeSHi syntax highlighting class when rendering your
+	    documentation:
+	   <screen><![CDATA[$ phd -g 'phpdotnet\phd\Highlighter_GeSHi' -d phd-guide.xml]]></screen>
+	   </para>
+	  </listitem>
+	</orderedlist>
+
+	<para>If you have GeSHi version 1.1.x installed, you should use
+	the <literal>phpdotnet\phd\Highlighter_GeSHi11x</literal> highlighter,
+	which is adapted to GeSHi's new API.
+	</para>
+
+	<para>Apart from using the highlighter shipped with PhD, you
+	can
+	<link linkend="phd-extension-highlighter">build your own highlighters</link>.
+	</para>
+      </section>
+
+    </section>
+
   </chapter>
+
 
   <chapter xml:id="docbook-extensions">
     <title>DocBook extensions</title>
@@ -513,6 +593,51 @@ $ phd -f bigxhtml -d phd-guide.xml
       </section>
     </section>
   </chapter>
+
+
+
+  <chapter xml:id="phd-extension">
+    <title>Extending PhD</title>
+
+    <para>Written in PHP, PhD is easy to hack on and easy to extend.
+    It provides command line parameters to use custom code
+    without changing PhD internals, like source code highlighters.</para>
+
+    <section xml:id="phd-extension-highlighter">
+      <title>Writing an own syntax highlighter</title>
+
+      <para>A syntax highlighter for PhD is nothing more than a simple
+      PHP class that has two methods, a <literal>factory</literal>
+      and <literal>highlight</literal>.</para>
+
+      <para><literal>factory</literal> is static and takes the format name
+      (i.e. <literal>pdf</literal>, <literal>xhtml</literal>,
+      <literal>troff</literal>) as only parameter. It returns
+      the highlighter instance object for the given format.
+      The method is called for each output format the documentation
+      is rendered to.</para>
+
+      <para><literal>highlight</literal> takes three parameters,
+      <literal>text</literal>, <literal>role</literal> and
+      <literal>format</literal>.
+      It is called whenever a piece of source code needs to be highlighted
+      and expects the highlighted source code to be returned in whatever
+      format the current rendering format is expected to be.</para>
+
+      <para>Take a look at the provided highlighters,
+      <literal>phpdotnet\phd\Highlighter</literal>,
+      <literal>phpdotnet\phd\Highlighter_GeSHi</literal> and
+      <literal>phpdotnet\phd\Highlighter_GeSHi11x</literal>.
+      They will serve as good examples how to implement your own
+      highlighter.</para>
+
+      <para>Once you wrote your custom source code highlighting
+      class, it's time to
+      <link linkend="render-custom-highlighter">try it out</link>.</para>
+    </section>
+  </chapter>
+
+
 
   <appendix xml:id="links">
     <title>Links</title>

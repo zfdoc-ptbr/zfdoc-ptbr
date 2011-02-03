@@ -167,10 +167,8 @@ class Package_Generic_ZFPackageChunkedXHTML extends Package_Generic_ChunkedXHTML
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>'.(($title != $navData['root']["ldesc"]) ? $title .= ' - Zend Framework Manual' : "Zend Framework Manual") . '</title>
 '.$cssLinks.'
-    <link href="../styles/styles.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1><a href="../../index.html">Zend Framework Manual</a></h1>
 <table width="100%">
     <tr valign="top">
         <td width="85%">' . $pageNav . "<hr />\n";
@@ -194,15 +192,15 @@ class Package_Generic_ZFPackageChunkedXHTML extends Package_Generic_ChunkedXHTML
         $prev = $next = $parent = array("href" => null, "desc" => null);
 
         if ($parentId = $this->getParent($id)) {
-            $parent = array("href" => $this->getFilename($parentId) . $this->getExt(),
+            $parent = array("href" => $this->getFilename($parentId) . '.' .$this->getExt(),
                 "desc" => $this->getShortDescription($parentId));
         }
         if ($prevId = Format::getPrevious($id)) {
-            $prev = array("href" => Format::getFilename($prevId) . $this->getExt(),
+            $prev = array("href" => Format::getFilename($prevId) . '.' .$this->getExt(),
                 "desc" => $this->getShortDescription($prevId));
         }
         if ($nextId = Format::getNext($id)) {
-            $next = array("href" => Format::getFilename($nextId) . $this->getExt(),
+            $next = array("href" => Format::getFilename($nextId) . '.' .$this->getExt(),
                 "desc" => $this->getShortDescription($nextId));
         }
         return array(
@@ -227,7 +225,7 @@ class Package_Generic_ZFPackageChunkedXHTML extends Package_Generic_ChunkedXHTML
 
                     <td width="50%" style="text-align: center;">
                         <div class="up">'.($data['parentId'] ? '<span class="up"><a href="' .$data['parent']["href"]. '">' .$data['parent']["desc"]. '</a></span><br />' : '') .'
-                        <span class="home"><a href="'.$data['root']["filename"].$this->getExt().'">'.$data['root']["ldesc"].'</a></span></div>
+                        <span class="home"><a href="'.$data['root']["filename"].".".$this->getExt().'">'.$data['root']["ldesc"].'</a></span></div>
                     </td>
 
                     <td width="25%" style="text-align: right;">
@@ -241,7 +239,7 @@ class Package_Generic_ZFPackageChunkedXHTML extends Package_Generic_ChunkedXHTML
                 '.($data['prevId'] ? '<div class="prev" style="text-align: left; float: left;"><a href="' .$data['prev']["href"]. '">' .$data['prev']["desc"]. '</a></div>' : '') .'
                 '.($data['nextId'] ? '<div class="next" style="text-align: right; float: right;"><a href="' .$data['next']["href"]. '">' .$data['next']["desc"].'</a></div>' : '') .'
                 <div class="up">'.($data['parentId'] ? '<span class="up"><a href="' .$data['parent']["href"]. '">' .$data['parent']["desc"]. '</a></span><br />' : '') .'
-                <span class="home"><a href="'.$data['root']["filename"].$this->getExt().'">'.$data['root']["ldesc"].'</a></span></div>
+                <span class="home"><a href="'.$data['root']["filename"].".".$this->getExt().'">'.$data['root']["ldesc"].'</a></span></div>
             </div>
 ';
             */

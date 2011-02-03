@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: TocFeed.php 298557 2010-04-25 21:16:02Z bjori $ */
 
 /**
  * Generates Atom feed of Table of Contents for

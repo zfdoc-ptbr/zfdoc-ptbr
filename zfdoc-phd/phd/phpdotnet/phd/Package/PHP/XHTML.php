@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: XHTML.php 300959 2010-07-03 00:34:25Z bjori $ */
 
 abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
     private $myelementmap = array(
@@ -83,8 +83,7 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
                 'classsynopsis' => 'format_classsynopsis_methodsynopsis_methodname_text',
             ),
             'methodsynopsis'    => array(
-                /* DEFAULT */      'format_function_text',
-                'classsynopsis' => 'format_classsynopsis_methodsynopsis_methodname_text',
+                /* DEFAULT */      'format_classsynopsis_methodsynopsis_methodname_text',
             ),
             'destructorsynopsis' => array(
                 /* DEFAULT */      'format_function_text',
@@ -388,13 +387,20 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
     }
 
     public function format_classsynopsis_methodsynopsis_methodname_text($value, $tag) {
+        if ($this->cchunk["classsynopsis"]["classname"]) {
+          if (strpos($value, "::") === false && strpos($value, "->") === false) {
+                $value = $this->cchunk["classsynopsis"]["classname"] . "::" . $value;
+                $this->cchunk["classsynopsis"]["classname"] = false;
+            }
+        }
+
         $display_value = parent::format_classsynopsis_methodsynopsis_methodname_text($value, $tag);
         return $this->format_function_text($value, $tag, $display_value);
     }
 
     public function format_function_text($value, $tag, $display_value = null) {
         if ($display_value === null) {
-            $display_value = $value;
+            $display_value = $value . "()";
         }
 
         $ref = strtolower(str_replace(array("_", "::", "->"), array("-", "-", "-"), $value));
@@ -407,15 +413,15 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
                 }
 
                 if ($this->chunked) {
-                    return '<a href="'.$filename. $this->ext. '" class="function"'.$rel.'>' .$display_value.($tag == "function" ? "()" : ""). '</a>'.$desc;
+                    return '<a href="'.$filename. $this->ext. '" class="' . $tag . '"'.$rel.'>' .$display_value. '</a>'.$desc;
                 }
-                return '<a href="#'.$filename. '" class="function"'.$rel.'>' .$display_value.($tag == "function" ? "()" : ""). '</a>'.$desc;
+                return '<a href="#'.$filename. '" class="' . $tag . '"'.$rel.'>' .$display_value. '</a>'.$desc;
             }
         } elseif ($this->CURRENT_ID !== $filename) {
             v("No link found for %s", $value, VERBOSE_BROKEN_LINKS);
         }
 
-        return '<b>' .$display_value.($tag == "function" ? "()" : ""). '</b>';
+        return '<b>' .$display_value. '</b>';
     }
 
     public function format_grep_classname_text($value, $tag) {
@@ -423,7 +429,8 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
     }
 
     public function format_classsynopsis_ooclass_classname_text($value, $tag) {
-        return $this->format_classname_text(parent::format_classsynopsis_ooclass_classname_text($value, $tag), $tag);
+        /* intentionally not return the value, it will be printed out by <methodname> "soon" */
+        parent::format_classsynopsis_ooclass_classname_text($value, $tag);
     }
 
     public function format_classname_text($value, $tag) {

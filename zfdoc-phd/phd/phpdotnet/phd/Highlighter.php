@@ -8,7 +8,7 @@
  * @package  PhD
  * @author   Christian Weiske <cweiske@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.php BSD Style
- * @version  SVN: $Id$
+ * @version  SVN: $Id: Highlighter.php 289820 2009-10-21 06:03:12Z cweiske $
  * @link     http://doc.php.net/phd/
  */
 namespace phpdotnet\phd;

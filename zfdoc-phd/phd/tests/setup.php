@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: setup.php 287045 2009-08-10 16:29:41Z moacir $ */
 
 function autoload($name) {
     $file = __DIR__ . "/../" . str_replace(array('\\', '_'), '/', $name) . '.php';

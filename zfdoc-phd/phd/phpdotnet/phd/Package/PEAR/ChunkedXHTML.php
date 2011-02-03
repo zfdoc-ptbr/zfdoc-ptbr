@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: ChunkedXHTML.php 298557 2010-04-25 21:16:02Z bjori $ */
 
 class Package_PEAR_ChunkedXHTML extends Package_PEAR_XHTML {
     public function __construct() {

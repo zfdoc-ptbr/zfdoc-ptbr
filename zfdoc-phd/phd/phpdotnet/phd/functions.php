@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: functions.php 300140 2010-06-03 03:33:21Z philip $ */
 
 /* {{{ PhD error & message handler */
 

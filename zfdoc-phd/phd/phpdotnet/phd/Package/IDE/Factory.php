@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Factory.php 307118 2011-01-05 13:26:25Z shein $ */
 
 class Package_IDE_Factory extends Format_Factory {
     private $formats = array(
@@ -8,6 +8,7 @@ class Package_IDE_Factory extends Format_Factory {
         'funclist'          => 'Package_IDE_Funclist',
         'json'              => 'Package_IDE_JSON',
         'php'               => 'Package_IDE_PHP',
+        'phpstub'           => 'Package_IDE_PHPStub'
     );
 
     public function __construct() {

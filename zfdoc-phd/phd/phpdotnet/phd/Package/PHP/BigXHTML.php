@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: BigXHTML.php 298508 2010-04-25 14:09:50Z bjori $ */
 
 class Package_PHP_BigXHTML extends Package_PHP_XHTML {
     public function __construct() {

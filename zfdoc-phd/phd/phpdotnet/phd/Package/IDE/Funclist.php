@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: Funclist.php 298557 2010-04-25 21:16:02Z bjori $ */
 
 class Package_IDE_Funclist extends Format {
     protected $elementmap   = array(

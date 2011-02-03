@@ -1,6 +1,6 @@
 <?php
 namespace phpdotnet\phd;
-/* $Id$ */
+/* $Id: KDevelop.php 298557 2010-04-25 21:16:02Z bjori $ */
 
 class Package_PHP_KDevelop extends Format {
     const DEFAULT_HREF = "http://www.php.net/manual/en/";
