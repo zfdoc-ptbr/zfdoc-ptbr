@@ -21,7 +21,7 @@ img {
     vertical-align:top;
 }
 
-div.book, div.part, div.chapter, div.section{
+div.book, div.part, div.chapter, div.appendix, div.section{
     background-color:#FFF;
     border:1px solid #ddd;
     padding:1em;

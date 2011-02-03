@@ -64,6 +64,35 @@ website: html
 	@[ -d ./output/website/$(VERSION)/css ] || cp -Rf ./css ./output/website/$(VERSION)
 	@[ -d ./output/website/$(VERSION)/js ] || cp -Rf ./js ./output/website/$(VERSION)
 
+trunk:
+	@rm -Rf ./temp
+	@mkdir ./temp
+	@echo "Copying lang files..."
+	@mkdir ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/figures ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/module_specs ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/ref ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/tutorials ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/$(LANG) ./temp
+	@cp -Rf ../documentation/manual/en ./temp
+	@( cd ./temp/$(LANG) && autoconf && ./configure && make -e $(MANUAL_XML) )
+	@echo "Executing sed on file ./temp/$(LANG)/$(MANUAL_XML)."
+	@sed -ir -e 's/<index id="the.index" \/>//' "./temp/$(LANG)/$(MANUAL_XML)"
+	@echo "Upgrading ./temp/$(LANG)/$(MANUAL_XML) to DocBook v5."
+	@xsltproc --xinclude ./db4-upgrade.xsl ./temp/$(LANG)/$(MANUAL_XML) > ./temp/$(LANG)/manual-db5.xml
+	@echo "Done."
+	@[ -d ./output ] || mkdir ./output
+	@echo "Rendering $(LANG) manual."
+	@php ./phd/render.php -x -f zfdoc -o ./output/trunk/$(LANG) -d ./temp/$(LANG)/manual-db5.xml
+	@rm -Rf ./temp
+	@rm -f ./output/trunk/$(LANG)/index.sqlite
+	@cp -Rf ./output/trunk/$(LANG)/zf-doc-chunked-xhtml/* ./output/trunk/$(LANG)
+	@rm -Rf ./output/trunk/$(LANG)/zf-doc-chunked-xhtml
+	@[ -d ./output/trunk/index.html ] || cp -f ./index.html.in ./output/trunk
+	@[ -d ./output/trunk/index.html ] || mv -f ./output/trunk/index.html.in ./output/trunk/index.html
+	@[ -d ./output/trunk/css ] || cp -Rf ./css ./output/trunk
+	@[ -d ./output/trunk/js ] || cp -Rf ./js ./output/trunk
+
 clean:
 	@rm -Rf ./temp
 	@rm -Rf ./output

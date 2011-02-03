@@ -16,18 +16,6 @@
 # @license      http://www.opensource.org/licenses/bsd-license    New BSD License
 date
 make clean
-make -e VERSION=1.11 LANG=en
-make -e VERSION=1.11 LANG=de
-make -e VERSION=1.11 LANG=es
-make -e VERSION=1.11 LANG=fr
-make -e VERSION=1.11 LANG=ja
-make -e VERSION=1.11 LANG=pt-br
-make -e VERSION=1.11 LANG=ru
-make -e VERSION=1.10 LANG=en
-make -e VERSION=1.10 LANG=de
-make -e VERSION=1.10 LANG=es
-make -e VERSION=1.10 LANG=fr
-make -e VERSION=1.10 LANG=ja
-make -e VERSION=1.10 LANG=pt-br
-make -e VERSION=1.10 LANG=ru
+make -e trunk LANG=en
+make -e trunk LANG=pt-br
 date
