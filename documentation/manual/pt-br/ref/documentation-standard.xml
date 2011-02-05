@@ -35,14 +35,14 @@
     </sect1>
 
     <sect1 id="doc-standard.file-formatting">
-        <title>Documentation File Formatting</title>
+        <title>Formatação dos Arquivos de Documentação</title>
 
         <sect2 id="doc-standard.file-formatting.xml-tags">
-            <title>XML Tags</title>
+            <title>Tags XML</title>
 
             <para>
-                Each manual file must include the following <acronym>XML</acronym> declarations at
-                the top of the file:
+                Cada arquivo do manual deve incluir as seguintes declarações <acronym>XML</acronym>
+                no topo do arquivo:
             </para>
 
             <programlisting language="xml"><![CDATA[
@@ -51,9 +51,9 @@
 ]]></programlisting>
 
             <para>
-                <acronym>XML</acronym> files from translated languages must also include a revision
-                tag containing the revision of the corresponding English-language file the
-                translation was based on.
+                Os arquivos <acronym>XML</acronym> provenientes de traduções devem também incluir
+                uma tag de revisão contendo a revisão do arquivo correspondente em inglês na qual a
+                tradução se baseou.
             </para>
 
             <programlisting language="xml"><![CDATA[
@@ -64,20 +64,26 @@
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.max-line-length">
-            <title>Maximum Line Length</title>
+            <title>Comprimento Máximo da Linha</title>
 
             <para>
-                The maximum line length, including tags, attributes, and indentation, is not to
-                exceed 100 characters. There is only one exception to this rule: attribute and value
-                pairs are allowed to exceed the 100 chars as they are not allowed to be separated.
+                O comprimento máximo de linha, incluindo tags, atributos e indentação, não deve
+                exceder 100 caracteres. Existe apenas uma exceção a essa regra: os pares de atributo
+                e valor são autorizados a ultrapassar os 100 caracteres, desde que não seja
+                permitido estarem separados.
             </para>
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.indentation">
-            <title>Indentation</title>
+            <title>Indentação</title>
 
-            <para>Indentation should consist of 4 spaces. Tabs are not allowed.</para>
-            <para>Tags which are at the same level must have the same indentation.</para>
+            <para>
+                A indentação deve ser composta por 4 espaços. Tabs não são permitidos.
+            </para>
+
+            <para>
+                Tags que estão no mesmo nível devem ter a mesma indentação.
+            </para>
 
             <programlisting language="xml"><![CDATA[
 <sect1>
@@ -88,8 +94,8 @@
 ]]></programlisting>
 
             <para>
-                Tags which are one level under the previous tag must be indented with 4 additional
-                spaces.
+                Tags que estão um nível abaixo da tag anterior devem ser indentadas com 4 espaços
+                adicionais.
             </para>
 
             <programlisting language="xml"><![CDATA[
@@ -100,18 +106,18 @@
 ]]></programlisting>
 
             <para>
-                Multiple block tags within the same line are not allowed; multiple inline tags are
-                allowed, however.
+                Várias tags de bloco dentro de uma mesma linha não são permitidas, no entanto várias
+                tags inline são permitidas.
             </para>
 
             <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED: -->
+<!-- NÃO PERMITIDO -->
 <sect1><sect2>
 </sect2></sect1>
 
-<!-- ALLOWED -->
+<!-- PERMITIDO -->
 <para>
-    <classname>Zend_Magic</classname> does not exist. <classname>Zend_Acl</classname> does.
+    <classname>Zend_Magic</classname> não existe. <classname>Zend_Acl</classname> existe.
 </para>
 ]]></programlisting>
         </sect2>
