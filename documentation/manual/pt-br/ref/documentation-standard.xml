@@ -67,7 +67,7 @@
             <title>Comprimento Máximo da Linha</title>
 
             <para>
-                O comprimento máximo de linha, incluindo tags, atributos e indentação, não deve
+                O comprimento máximo da linha, incluindo tags, atributos e indentação, não deve
                 exceder 100 caracteres. Existe apenas uma exceção a essa regra: os pares de atributo
                 e valor são autorizados a ultrapassar os 100 caracteres, desde que não seja
                 permitido estarem separados.
@@ -106,8 +106,8 @@
 ]]></programlisting>
 
             <para>
-                Várias tags de bloco dentro de uma mesma linha não são permitidas, no entanto várias
-                tags inline são permitidas.
+                Vários elementos de bloco dentro de uma mesma linha não são permitidos, no entanto
+                vários elementos inline são permitidos.
             </para>
 
             <programlisting language="xml"><![CDATA[
@@ -123,32 +123,33 @@
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.line-termination">
-            <title>Line Termination</title>
+            <title>Terminação de Linha</title>
 
             <para>
-                Line termination follows the Unix text file convention. Lines must end with a
-                single linefeed (LF) character. Linefeed characters are represented as ordinal 10,
-                or hexadecimal 0x0A.
+                A terminação de linha segue a convenção para arquivos de texto do Unix. As linhas
+                devem terminar com um simples caractere line feed (LF). Caracteres line feed são
+                representados pelo ordinal 10 ou hexadecimal 0x0A.
             </para>
 
             <para>
-                Note: Do not use carriage returns (<acronym>CR</acronym>) as is the convention in
-                Apple OS's (0x0D) or the carriage return - linefeed combination
-                (<acronym>CRLF</acronym>) as is standard for the Windows OS (0x0D, 0x0A).
+                Nota: Não utilize o carriage return (<acronym>CR</acronym>), como na convenção dos
+                sistemas operacionais da Apple (0x0D) ou a combinação carriage return - line feed
+                (<acronym>CRLF</acronym>) como no padrão para os sistemas operacionais Windows
+                (0x0D, 0x0A).
             </para>
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.empty-tags">
-            <title>Empty tags</title>
+            <title>Tags vazias</title>
 
             <para>
-                Empty tags are not allowed; all tags must contain text or child tags.
+                Tags vazias não são permitidas; todas as tags devem conter texto ou tags filhas.
             </para>
 
             <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
 <para>
-    Some text. <link></link>
+    Algum texto. <link></link>
 </para>
 
 <para>
@@ -157,129 +158,131 @@
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.whitespace">
-            <title>Usage of whitespace within documents</title>
+            <title>Uso de espaços em branco dentro de documentos</title>
 
             <sect3 id="doc-standard.file-formatting.whitespace.trailing">
-                <title>Whitespace within tags</title>
+                <title>Espaço em branco dentro de tags</title>
 
                 <para>
-                    Opening block tags should have no whitespace immediately following them other
-                    than line breaks (and indentation on the following line).
+                    Não deve haver nada imediatamente apoś as tags de abertura de elementos de bloco
+                    além de uma quebra linha (e a indentação na linha seguinte).
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
-<sect1>WHITESPACE
+<!-- NÃO PERMITIDO -->
+<sect1>ESPAÇO
 </sect1>
 ]]></programlisting>
 
                 <para>
-                    Opening inline tags should have no whitespace immediately following them.
+                    Não deve haver espaço em branco imediatamente após as tags de abertura de
+                    elementos inline.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
-This is the class <classname> Zend_Class</classname>.
+<!-- NÃO PERMITIDO -->
+Esta é a classe <classname> Zend_Class</classname>.
 
-<!-- OK -->
-This is the class <classname>Zend_Class</classname>.
+<!-- PERMITIDO -->
+Esta é a classe <classname>Zend_Class</classname>.
 ]]></programlisting>
 
                 <para>
-                    Closing block tags may be preceded by whitespace equivalent to the current
-                    indentation level, but no more than that amount.
+                    As tags de fechamento de elementos de bloco podem ser precedidos por espaços em
+                    branco equivalentemente ao nível atual de indentação, mas não mais do que isso.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
     <sect1>
      </sect1>
 
-<!-- OK -->
+<!-- PERMITIDO -->
     <sect1>
     </sect1>
 ]]></programlisting>
 
                 <para>
-                    Closing inline tags must not be preceded by any whitespace.
+                    As tags de fechamento de elementos inline não devem ser precedidas por nenhum
+                    espaço em branco.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
-This is the class <classname>Zend_Class </classname>
+<!-- NÃO PERMITIDO -->
+Esta é a classe <classname>Zend_Class </classname>
 
-<!-- OK -->
-This is the class <classname>Zend_Class</classname>
+<!-- PERMITIDO -->
+Esta é a classe <classname>Zend_Class</classname>
 ]]></programlisting>
             </sect3>
 
             <sect3 id="doc-standard.file-formatting.whitespace.multiple-line-breaks">
-                <title>Multiple line breaks</title>
+                <title>Várias quebras de linha</title>
 
                 <para>
-                    Multiple line breaks within or between tags are not allowed.
+                    Várias quebras de linha dentro ou entre as tags não são permitidas.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
 <para>
-    Some text...
+    Algum texto...
 
-    ... and more text
+    ... e mais texto
 </para>
 
 
 <para>
-    Another paragraph.
+    Outro parágrafo.
 </para>
 
-<!-- OK -->
+<!-- PERMITIDO -->
 <para>
-    Some text...
-    ... and more text
+    Algum texto...
+    ... e mais texto
 </para>
 
 <para>
-    Another paragraph.
+    Outro parágrafo.
 </para>
 ]]></programlisting>
             </sect3>
 
             <sect3 id="doc-standard.file-formatting.whitespace.tag-separation">
-                <title>Separation between tags</title>
+                <title>Separação entre as tags</title>
 
                 <para>
-                    Tags at the same level must be separated by an empty line to improve
-                    readability.
+                    Tags em um mesmo nível devem ser separadas por uma linha em branco para melhorar
+                    a legibilidade.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
 <para>
-    Some text...
+    Algum texto...
 </para>
 <para>
-    More text...
-</para>
-
-<!-- OK -->
-<para>
-    Some text...
+    Mais texto...
 </para>
 
+<!-- PERMITIDO -->
 <para>
-    More text...
+    Algum texto...
+</para>
+
+<para>
+    Mais texto...
 </para>
 ]]></programlisting>
 
                 <para>
-                    The first child tag should open directly below its parent, with no empty line
-                    between them; the last child tag should close directly before the closing tag of
-                    its parent.
+                    O primeiro elemento filho de ser aberto diretamente abaixo de seu pai, sem linha
+                    vazia entre eles. O último elemento filho deve ser fechado diretamente antes da
+                    tag de fechamento de seu pai.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
 <sect1>
 
     <sect2>
@@ -293,7 +296,7 @@ This is the class <classname>Zend_Class</classname>
 
 </sect1>
 
-<!-- OK -->
+<!-- PERMITIDO -->
 <sect1>
     <sect2>
     </sect2>
