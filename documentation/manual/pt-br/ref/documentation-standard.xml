@@ -312,71 +312,71 @@ Esta é a classe <classname>Zend_Class</classname>
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.program-listing">
-            <title>Program Listings</title>
+            <title>Códigos de Exemplo</title>
 
             <para>
-                The opening <emphasis>&lt;programlisting&gt;</emphasis> tag must indicate the
-                appropriate "language" attribute and be indented at the same level as its sibling
-                blocks.
+                A tag de abertura de <emphasis>&lt;programlisting&gt;</emphasis> deve indicar o
+                atributo "language" adequado e ser indentado no mesmo nível que seus blocos irmãos.
             </para>
 
             <programlisting language="xml"><![CDATA[
-<para>Sibling paragraph.</para>
+<para>Parágrafo irmão.</para>
 
 <programlisting language="php">]]>&lt;<![CDATA[![CDATA[
 ]]></programlisting>
 
             <para>
-                <acronym>CDATA</acronym> should be used around all program listings.
+                <acronym>CDATA</acronym> deve ser usado junto de todos os códigos de exemplo.
             </para>
 
             <para>
-                <emphasis>&lt;programlisting&gt;</emphasis> sections must not add linebreaks or
-                whitespace at the beginning or end of the section, as these are then represented in
-                the final output.
+                As seções de <emphasis>&lt;programlisting&gt;</emphasis> não devem conter quebras de
+                linha ou espaços em branco no início ou no final da seção, uma vez que estas são
+                representadas no resultado final.
             </para>
 
             <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
 <programlisting language="php">]]>&lt;<![CDATA[![CDATA[
 
 $render = "xxx";
 
 ]]]]>&gt;<![CDATA[</programlisting>
 
-<!-- OK -->
+<!-- PERMITIDO -->
 <programlisting language="php">]]>&lt;<![CDATA[![CDATA[
 $render = "xxx";
 ]]]]>&gt;<![CDATA[</programlisting>
 ]]></programlisting>
 
             <para>
-                Ending <acronym>CDATA</acronym> and <emphasis>&lt;programlisting&gt;</emphasis>
-                tags should be on the same line, without any indentation.
+                As tags de fechamento de <acronym>CDATA</acronym> e
+                <emphasis>&lt;programlisting&gt;</emphasis> devem estar na mesma linha, sem qualquer
+                indentação.
             </para>
 
             <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
     <programlisting language="php">]]>&lt;<![CDATA[![CDATA[
 $render = "xxx";
 ]]]]>&gt;<![CDATA[
     </programlisting>
 
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
     <programlisting language="php">]]>&lt;<![CDATA[![CDATA[
 $render = "xxx";
     ]]]]>&gt;<![CDATA[</programlisting>
 
-<!-- OK -->
+<!-- PERMITIDO -->
     <programlisting language="php">]]>&lt;<![CDATA[![CDATA[
 $render = "xxx";
 ]]]]>&gt;<![CDATA[</programlisting>
 ]]></programlisting>
 
             <para>
-                The <emphasis>&lt;programlisting&gt;</emphasis> tag should contain the "language"
-                attribute with a value appropriate to the contents of the program listing. Typical
-                values include "css", "html", "ini", "javascript", "php", "text", and "xml".
+                A tag <emphasis>&lt;programlisting&gt;</emphasis> deve conter o atributo "language"
+                com um valor correspondente ao conteúdo do código de exemplo. Os valores típicos
+                incluem "css", "html", "ini", "javascript", "php", "text", e "xml". 
             </para>
 
             <programlisting language="xml"><![CDATA[
@@ -391,14 +391,14 @@ $render = "xxx";
 ]]></programlisting>
 
             <para>
-                For program listings containing only <acronym>PHP</acronym> code,
-                <acronym>PHP</acronym> tags (e.g., "&lt;?php", "?&gt;") are not required, and
-                should not be used. They simply clutter the narrative, and are implied by the use
-                of the <emphasis>&lt;programlisting&gt;</emphasis> tag.
+                Para códigos de exemplo que contenham apenas código <acronym>PHP</acronym>, as tags
+                do <acronym>PHP</acronym> (por exemplo, "&lt;?php", "?&gt;") não são necessárias, e
+                não devem ser usadas. Elas dificultam a legibilidade do código, e estão implícitas
+                no uso do elemento <emphasis>&lt;programlisting&gt;</emphasis>.
             </para>
 
             <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
+<!-- NÃO PERMITIDO -->
 <programlisting language="php"]]>&lt;<![CDATA[![CDATA[<?php
     // ...
 ?>]]]]>&gt;<![CDATA[</programlisting>
@@ -411,45 +411,46 @@ $render = "xxx";
 ]]></programlisting>
 
             <para>
-                Line lengths within program listings should follow the <link
-                    linkend="coding-standard.php-file-formatting.max-line-length">coding standards
-                recommendations</link>.
+                Os comprimentos de linha dentro de códigos de exemplo devem seguir as <link
+                    linkend="coding-standard.php-file-formatting.max-line-length">recomendações das
+                    normas de codificação</link>.
             </para>
 
             <para>
-                Refrain from using <methodname>require_once()</methodname>,
-                <methodname>require()</methodname>, <methodname>include_once()</methodname>, and
-                <methodname>include()</methodname> calls within <acronym>PHP</acronym> listings.
-                They simply clutter the narrative, and are largely obviated when using an
-                autoloader. Use them only when they are essential to the example.
+                Evite utilizar <methodname>require_once()</methodname>,
+                <methodname>require()</methodname>, <methodname>include_once()</methodname>, e
+                <methodname>include()</methodname> dentro de exemplos em <acronym>PHP</acronym>.
+                Eles dificultam a legibilidade do código, e são basicamente evitados quando
+                utiliza-se um carregador automático. Use-os apenas quando forem essenciais ao
+                exemplo.
             </para>
 
             <note>
-                <title>Never use short tags</title>
+                <title>Nunca utilize tags curtas</title>
 
                 <para>
-                    Short tags (e.g., "&lt;?", "&lt;?=") should never be used within
-                    <emphasis>programlisting</emphasis> or the narrative of a document.
+                    Tags curtas (por exemplo, "&lt;?", "&lt;?=") nunca devem ser usadas dentro do
+                    elemento <emphasis>programlisting</emphasis> ou no restante da documentação.
                 </para>
             </note>
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.inline-tags">
-            <title>Notes on specific inline tags</title>
+            <title>Notas sobre elementos inline específicos</title>
 
             <sect3 id="doc-standard.file-formatting.inline-tags.classname">
                 <title>classname</title>
 
                 <para>
-                    The tag <emphasis>&lt;classname&gt;</emphasis> must be used each time a class
-                    name is represented by itself; it should not be used when combined with a
-                    method name, variable name, or constant, and no other content is allowed within
-                    the tag.
+                    O elemento <emphasis>&lt;classname&gt;</emphasis> deve ser usado cada vez que um
+                    nome de classe é representado sozinho. Não deve ser usado quando combinado com
+                    um nome de método, nome de variável ou constante, e nenhum outro conteúdo é
+                    permitido dentro do elemento.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
 <para>
-    The class <classname>Zend_Class</classname>.
+    A classe <classname>Zend_Class</classname>.
 </para>
 ]]></programlisting>
             </sect3>
@@ -458,14 +459,15 @@ $render = "xxx";
                 <title>varname</title>
 
                 <para>
-                    Variables must be wrapped in the <emphasis>&lt;varname&gt;</emphasis> tag.
-                    Variables must be written using the "$" sigil. No other content is allowed
-                    within this tag, unless a class name is used, which indicates a class variable.
+                    Variáveis devem ser envolvidas pelo elemento
+                    <emphasis>&lt;varname&gt;</emphasis>. As variáveis devem ser escritas usando o
+                    símbolo "$". Nenhum outro conteúdo é permitido dentro deste elemento, exceto se
+                    um nome de classe é usado, o que indica uma variável de classe.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
 <para>
-    The variable <varname>$var</varname> and the class variable
+    A variável <varname>$var</varname> e a variável de classe
     <varname>Zend_Class::$var</varname>.
 </para>
 ]]></programlisting>
@@ -475,17 +477,18 @@ $render = "xxx";
                 <title>methodname</title>
 
                 <para>
-                    Methods must be wrapped in the <emphasis>&lt;methodname&gt;</emphasis> tag.
-                    Methods must either include the full method signature or at the least a pair of
-                    closing parentheses (e.g., "()"). No other content is allowed within this tag,
-                    unless a class name is used, which indicates a class method.
+                    Métodos devem ser envolvidos pelo elemento
+                    <emphasis>&lt;methodname&gt;</emphasis>. Os métodos devem ou incluir sua
+                    assinatura completa ou pelo menos um par de parênteses (por exemplo, "()").
+                    Nenhum outro conteúdo é permitido dentro do elemento, exceto se um nome de
+                    classe é usado, o que indica um método de classe.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
 <para>
-    The method <methodname>foo()</methodname> and the class method
-    <methodname>Zend_Class::foo()</methodname>. A method with a full signature:
-    <methodname>foo($bar, $baz)</methodname>
+    O método <methodname>foo()</methodname> e o método de classe
+    <methodname>Zend_Class::foo()</methodname>. Um método com uma assinatura
+    completa: <methodname>foo($bar, $baz)</methodname>
 </para>
 ]]></programlisting>
             </sect3>
@@ -494,15 +497,15 @@ $render = "xxx";
                 <title>constant</title>
 
                 <para>
-                    Use the <emphasis>&lt;constant&gt;</emphasis> tag when denoting constants.
-                    Constants must be written in <acronym>UPPERCASE</acronym>. No other content is
-                    allowed within this tag, unless a class name is used, which indicates a class
-                    constant.
+                    Use o elemento <emphasis>&lt;constant&gt;</emphasis> quando designar constantes.
+                    As constantes devem ser escritas em <acronym>MAIÚSCULAS</acronym>. Nenhum outro
+                    conteúdo é permitido dentro deste elemento, exceto se um nome de classe é usado,
+                    o que indica uma constante de classe.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
 <para>
-    The constant <constant>FOO</constant> and the class constant
+    A constante <constant>FOO</constant> e a constante de classe
     <constant>Zend_Class::FOO</constant>.
 </para>
 ]]></programlisting>
@@ -512,14 +515,14 @@ $render = "xxx";
                 <title>filename</title>
 
                 <para>
-                    Filenames and paths must be wrapped in the
-                    <emphasis>&lt;filename&gt;</emphasis> tag. No other content is allowed in this
-                    tag.
+                    Nomes de arquivos e caminhos devem ser envolvidos pelo elemento
+                    <emphasis>&lt;filename&gt;</emphasis>. Nenhum outro conteúdo é permitido neste
+                    elemento.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
 <para>
-    The filename <filename>application/Bootstrap.php</filename>.
+    O nome de arquivo <filename>application/Bootstrap.php</filename>.
 </para>
 ]]></programlisting>
             </sect3>
@@ -528,9 +531,9 @@ $render = "xxx";
                 <title>command</title>
 
                 <para>
-                    Commands, shell scripts, and program calls must be wrapped in the
-                    <emphasis>&lt;command&gt;</emphasis> tag. If the command includes arguments,
-                    these should also be included within the tag.
+                    Comandos, shell scripts e chamadas de programa devem ser envolvidos pelo
+                    elemento <emphasis>&lt;command&gt;</emphasis>. Se o comando incluir argumentos,
+                    estes também devem ser incluídos dentro do elemento.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
@@ -544,28 +547,28 @@ $render = "xxx";
                 <title>code</title>
 
                 <para>
-                    Usage of the <emphasis>&lt;code&gt;</emphasis> tag is discouraged, in favor of
-                    the other inline tasks discussed previously.
+                    O uso do elemento <emphasis>&lt;code&gt;</emphasis> é desencorajado, em favor
+                    dos outros elementos inline discutidos anteriormente.
                 </para>
             </sect3>
         </sect2>
 
         <sect2 id="doc-standard.file-formatting.block-tags">
-            <title>Notes on specific block tags</title>
+            <title>Notas sobre elementos de bloco específicos</title>
 
             <sect3 id="doc-standard.file-formatting.block-tags.title">
                 <title>title</title>
 
                 <para>
-                    The <emphasis>&lt;title&gt;</emphasis> tag is not allowed to hold other tags.
+                    O elemento <emphasis>&lt;title&gt;</emphasis> não permite ter elementos filhos.
                 </para>
 
                 <programlisting language="xml"><![CDATA[
-<!-- NOT ALLOWED -->
-<title>Using <classname>Zend_Class</classname></title>
+<!-- NÃO PERMITIDO -->
+<title>Usando <classname>Zend_Class</classname></title>
 
-<!-- OK -->
-<title>Using Zend_Class</title>
+<!-- PERMITIDO -->
+<title>Usando Zend_Class</title>
 ]]></programlisting>
             </sect3>
         </sect2>
