@@ -575,61 +575,62 @@ $render = "xxx";
     </sect1>
 
     <sect1 id="doc-standard.recommendations">
-        <title>Recommendations</title>
+        <title>Recomendações</title>
 
         <sect2 id="doc-standard.recommendations.editors">
-            <title>Use editors without autoformatting</title>
+            <title>Use editores sem formatação automática</title>
 
             <para>
-                For editing the documentation, typically you should not use formal
-                <acronym>XML</acronym> editors. Such editors normally autoformat existing documents
-                to fit their own standards and/or do not strictly follow the docbook standard. As
-                examples, we have seen them erase the <acronym>CDATA</acronym> tags, change 4 space
-                separation to tabs or 2 spaces, etc.
+                Para editar a documentação, normalmente você não deve usar os editores
+                <acronym>XML</acronym> clássicos. Esses editores geralmente formatam automaticamente
+                os documentos existentes para que se adaptem as suas próprias normas e/ou não seguem
+                rigorosamente o padrão docbook. Como exemplos, já os vimos apagar as tags
+                <acronym>CDATA</acronym>, substituírem 4 espaços por tabs ou 2 espaços etc.
             </para>
 
             <para>
-                The style guidelines were written in large part to assist translators in recognizing
-                the lines that have changed using normal <command>diff</command> tools.
-                Autoformatting makes this process more difficult.
+                Estas diretrizes foram escritas em grande parte para auxiliar os tradutores no
+                reconhecimento das linhas que foram alteradas usando as ferramentas de
+                <command>diff</command> normais. A formatação automática torna esse processo mais
+                difícil.
             </para>
         </sect2>
 
         <sect2 id="doc-standard.recommendations.images">
-            <title>Use Images</title>
+            <title>Use Imagens</title>
 
             <para>
-                Good images and diagrams can improve readability and comprehension. Use them
-                whenever they will assist in these goals. Images should be placed in the
-                <filename>documentation/manual/en/figures/</filename> directory, and be named after
-                the section identifier in which they occur.
+                Boas imagens e diagramas podem melhorar a legibilidade e a compreensão. Use-as
+                sempre que ajudarem nesses objetivos. Imagens devem ser colocadas no diretório
+                <filename>documentation/manual/en/figures/</filename>, e nomeadas após o
+                identificador de seção em que lhes diz respeito.
             </para>
         </sect2>
 
         <sect2 id="doc-standard.recommendations.examples">
-            <title>Use Case Examples</title>
+            <title>Use Exemplos de Caso de Uso</title>
 
             <para>
-                Look for good use cases submitted by the community, especially those posted in
-                proposal comments or on one of the mailing lists. Examples often illustrate usage
-                far better than the narrative does.
+                Procure por bons casos de uso apresentados pela comunidade, especialmente aqueles
+                que são publicados nos comentários de sugestão ou nas listas de discussão. Os
+                exemplos frequentemente ilustram a utilização muito melhor do que todo o texto.
             </para>
 
             <para>
-                When writing your examples for inclusion in the manual, follow
-                all coding standards and documentation standards.
+                Ao escrever seus exemplos para inclusão no manual, siga todas as normas de
+                codificação e de documentação.
             </para>
         </sect2>
 
         <sect2 id="doc-standard.recommendations.phpdoc">
-            <title>Avoid Replicating phpdoc Contents</title>
+            <title>Evite Duplicar o Conteúdo de phpdoc</title>
 
             <para>
-                The manual is intended to be a reference guide for end-user usage. Replicating
-                the phpdoc documentation for internal-use components and classes is not wanted, and
-                the narrative should be focussed on usage, not the internal workings. In any case,
-                at this time, we would like the documentation teams to focus on translating the
-                English manual, not the phpdoc comments.
+                O manual pretende ser um guia de referência para a utilização do usuário final. A
+                duplicação da documentação de phpdoc para componentes e classes de uso interno não é
+                desejada, e a documentação deve estar focada na utilização e não no funcionamento
+                interno. Em qualquer caso, neste momento, gostaríamos que as equipes de documentação
+                se concentrassem na tradução do manual em inglês, e não nos comentários de phpdoc.
             </para>
         </sect2>
 
@@ -637,30 +638,30 @@ $render = "xxx";
             <title>Use Links</title>
 
             <para>
-                Link to other sections of the manual or to external sources
-                instead of recreating documentation.
+                Crie links para outras seções do manual ou para fontes externas em vez de recriar
+                documentação.
             </para>
 
             <para>
-                Linking to other sections of the manual may be done using the
-                <emphasis>&lt;link&gt;</emphasis> tag (to which you must provide link text).
+                Os links para outras seções do manual podem ser feitos usando o elemento
+                <emphasis>&lt;link&gt;</emphasis> (para o qual você deve fornecer o nome do link).
             </para>
 
             <programlisting language="xml"><![CDATA[
 <para>
-    "Link" links to a section, using descriptive text: <link
-        linkend="doc-standard.recommendations.links">documentation on
+    "Link" cria um link para uma seção, usando um texto descritivo: <link
+        linkend="doc-standard.recommendations.links">documentação sobre os
         links</link>.
 </para>
 ]]></programlisting>
 
             <para>
-                To link to an external resource, use <emphasis>&lt;ulink&gt;</emphasis>:
+                Para criar um link para uma fonte externa, use <emphasis>&lt;ulink&gt;</emphasis>:
             </para>
 
             <programlisting language="xml"><![CDATA[
 <para>
-    The <ulink url="http://framework.zend.com/">Zend Framework site</ulink>.
+    O <ulink url="http://framework.zend.com/">site do Zend Framework</ulink>.
 </para>
 ]]></programlisting>
         </sect2>
