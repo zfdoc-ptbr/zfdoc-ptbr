@@ -68,7 +68,12 @@ class Package_Generic_ZFDocChunkedXHTML extends Package_Generic_ZFPackageChunked
     <link href="../css/styles.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1><a href="../index.html">Zend Framework Manual</a></h1>
+<h1>Zend Framework</h1>
+<h2>Programmer\'s Reference Guide</h2>
+<ul>
+    <li><a href="../en/'.Format::getFilename($id).$this->getExt().'">Inglês (English)</a></li>
+    <li><a href="../pt-br/'.Format::getFilename($id).$this->getExt().'">Português Brasileiro (Brazilian Portuguese)</a></li>
+</ul>
 <table width="100%">
     <tr valign="top">
         <td width="85%">' . $pageNav . "<hr />\n";

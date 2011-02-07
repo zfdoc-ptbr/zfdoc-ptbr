@@ -83,15 +83,15 @@ trunk:
 	@echo "Done."
 	@[ -d ./output ] || mkdir ./output
 	@echo "Rendering $(LANG) manual."
-	@php ./phd/render.php -x -f zfdoc -o ./output/trunk/$(LANG) -d ./temp/$(LANG)/manual-db5.xml
+	@php ./phd/render.php -x -f zfdoc -o ./output/manual/$(LANG) -d ./temp/$(LANG)/manual-db5.xml
 	@rm -Rf ./temp
-	@rm -f ./output/trunk/$(LANG)/index.sqlite
-	@cp -Rf ./output/trunk/$(LANG)/zf-doc-chunked-xhtml/* ./output/trunk/$(LANG)
-	@rm -Rf ./output/trunk/$(LANG)/zf-doc-chunked-xhtml
-	@[ -d ./output/trunk/index.html ] || cp -f ./index.html.in ./output/trunk
-	@[ -d ./output/trunk/index.html ] || mv -f ./output/trunk/index.html.in ./output/trunk/index.html
-	@[ -d ./output/trunk/css ] || cp -Rf ./css ./output/trunk
-	@[ -d ./output/trunk/js ] || cp -Rf ./js ./output/trunk
+	@rm -f ./output/manual/$(LANG)/index.sqlite
+	@cp -Rf ./output/manual/$(LANG)/zf-doc-chunked-xhtml/* ./output/manual/$(LANG)
+	@rm -Rf ./output/manual/$(LANG)/zf-doc-chunked-xhtml
+	@[ -d ./output/manual/index.html ] || cp -f ./index.html.in ./output/manual
+	@[ -d ./output/manual/index.html ] || mv -f ./output/manual/index.html.in ./output/manual/index.html
+	@[ -d ./output/manual/css ] || cp -Rf ./css ./output/manual
+	@[ -d ./output/manual/js ] || cp -Rf ./js ./output/manual
 
 clean:
 	@rm -Rf ./temp
