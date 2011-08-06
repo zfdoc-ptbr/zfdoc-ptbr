@@ -1,6 +1,6 @@
 SyntaxHighlighter.autoloader(
 	'applescript			../js/shBrushAppleScript.js',
-	'actionscript3 as3		../js/shBrushAS3.js',
+	'actionscript as actionscript3 as3		../js/shBrushAS3.js',
 	'bash shell				../js/shBrushBash.js',
 	'coldfusion cf			../js/shBrushColdFusion.js',
 	'cpp c					../js/shBrushCpp.js',
