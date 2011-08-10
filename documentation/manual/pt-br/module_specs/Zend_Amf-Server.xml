@@ -82,10 +82,6 @@ $server->addDirectory(dirname(__FILE__) .'/../package/');
         </para>
 
         <para>
-            All <acronym>AMF</acronym> requests sent to the script will then be handled by the
-            server, and an <acronym>AMF</acronym> response will be returned.
-        </para>
-        <para>
             Todas as requisições <acronym>AMF</acronym> enviadas ao script serão manipuladas
             posteriormente pelo servidor, e uma resposta <acronym>AMF</acronym> será retornada.
         </para>
@@ -143,25 +139,26 @@ class World
         <title>Conectando ao servidor com Flex</title>
 
         <para>
-            Connecting to your <classname>Zend_Amf_Server</classname> from your Flex
-            project is quite simple; you simply need to point your endpoint <acronym>URI</acronym>
-            to your <classname>Zend_Amf_Server</classname> script.
+            Conectar a seu <classname>Zend_Amf_Server</classname> a partir de seu projeto Flex é 
+            bem simples; você simplesmente precisa apontar sua <acronym>URI</acronym> de ponto de
+            extremidade para seu script <classname>Zend_Amf_Server</classname>
         </para>
 
         <para>
-            Say, for instance, you have created your server and placed it in the
-            <filename>server.php</filename> file in your application root, and thus the
-            <acronym>URI</acronym> is <filename>http://example.com/server.php</filename>. In this
-            case, you would modify your <filename>services-config.xml</filename> file to set the
-            channel endpoint uri attribute to this value.
+            Digamos, por exemplo, que você tenha criado seu servidor e o colocado no arquivo
+            <filename>server.php</filename> na raiz de sua aplicação, e seu <acronym>URI</acronym> é
+            <filename>http://example.com/server.php</filename>. Neste caso, você modificaria seu
+            arquivo <filename>services-config.xml</filename> para definir o atributo uri de ponto de
+            extremidade, channel, para este valor.
         </para>
 
         <para>
-            If you have never created a <filename>service-config.xml</filename> file you can do so
-            by opening your project in your Navigator window. Right click on the project name and
-            select 'properties'. In the Project properties dialog go into 'Flex Build Path' menu,
-            'Library path' tab and be sure the '<filename>rpc.swc</filename>' file is added to your
-            projects path and Press Ok to close the window.
+            Se você nunca criou um arquivo <filename>services-config.xml</filename> você poderá
+            fazê-lo abrindo seu projeto na janela 'Navigator' do Flex Builder. Clique com o botão
+            direito sobre nome do projeto e selecione 'properties'. Na janela de diálogo de
+            propriedades do projeto vá para o menu 'Flex Build Path', aba 'Library path' e tenha
+            certeza de que o arquivo '<filename>rpc.swc</filename>' foi adicionado ao caminhos de
+            seus projetos e pressione 'Ok' para fechar a janela.
         </para>
 
         <para>
