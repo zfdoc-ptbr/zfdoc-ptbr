@@ -397,28 +397,27 @@ C:\WAMP\PHP\bin
             <title>Criando Providers</title>
 
             <para>
-                In general, a provider, on its own, is nothing more than the shell for a
-                developer to bundle up some capabilities they wish to dispatch with the
-                command line (or other) clients. It is an analogue to what a
-                "controller" is inside of your <acronym>MVC</acronym> application.
+                Em geral, um provider, por si só, é nada mais que o a casca para um
+                desenvolvedor para agrupar-se algumas das capacidades que eles desejam
+                enviar com um o cliente de linha de comando (ou outro). Ele é um análogo
+                para o que um "controller" é dentro da sua aplicação <acronym>MVC</acronym>.
             </para>
 
             <sect4 id="zend.tool.extending.zend-tool-framework.providers-and-manifests.loading">
-                <title>How Zend_Tool finds your Providers</title>
+                <title>Como o Zend_Tool encontra seus Providers</title>
 
                 <para>
-                    By default <classname>Zend_Tool</classname> uses the BasicLoader to find all
-                    the providers that you can run. It recursivly iterates all
-                    include path directories and opens all files that end
-                    with "Manifest.php" or "Provider.php". All classes in these
-                    files are inspected if they implement either
-                    <classname>Zend_Tool_Framework_Provider_Interface</classname>
-                    or <classname>Zend_Tool_Framework_Manifest_ProviderManifestable</classname>.
-                    Instances of the provider interface make up for the real functionality
-                    and all their public methods are accessible as provider actions.
-                    The ProviderManifestable interface however requires the implementation of a
-                    method <methodname>getProviders()</methodname> which returns an array of
-                    instantiated provider interface instances.
+                    Por padrão <classname>Zend_Tool</classname> usa o BasicLoader para encontrar
+                    todos os providers que você pode rodar. Ele itera recursivamente todos
+                    os diretórios do include path e abre todos os arquivos que terminam
+                    com "Manifest.php" ou "Provider.php". Todas as classes naqueles arquivos
+                    são inspecionadas se implementam ou <classname>Zend_Tool_Framework_Provider_Interface</classname>
+                    ou <classname>Zend_Tool_Framework_Manifest_ProviderManifestable</classname>.
+                    Instancias da interface do provider implementam a real funcionalidade e
+                    todos os métodos públicos estão acessíveis como actions do provider.
+                    A interface ProviderManifestable de qualquer forma requer a implementação de um
+                    metodo <methodname>getProviders()</methodname> que reforna um array de
+                    instâncias da interface provider.
                 </para>
 
                 <para>
