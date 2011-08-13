@@ -50,7 +50,7 @@
     </itemizedlist>
 
     <example id="zend.application.available-resources.db.configExample">
-        <title>Amostra de configuração do Recurso DB</title>
+        <title>Exemplo de configuração do recurso DB</title>
 
         <para>
             Abaixo está um exemplo <acronym>INI</acronym> configuração que pode ser usada para inicializar

@@ -17,7 +17,7 @@
     </para>
 
     <example id="zend.application.available-resources.cachemanager.configExample">
-        <title>Amostra de configuração do recurso Cachemanager</title>
+        <title>Exemplo de configuração do recurso Cachemanager</title>
 
         <para>
             Abaixo está um exemplo de arquivo <acronym>INI</acronym> mostrando como
