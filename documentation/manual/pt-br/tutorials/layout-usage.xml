@@ -108,38 +108,39 @@ resources.layout.layout = "layout"
 ]]></programlisting>
 
                 <para>
-                    Since it returns the layout instance, you can also simply call methods on it,
-                    rather than assigning it to a variable.
+                    Uma vez que retornar a instância layout, você pode também simplesmente chamar os
+                    métodos nele, ao invés de atribuir ela a uma variável.
                 </para>
             </listitem>
 
             <listitem>
                 <para>
-                    <emphasis>Within action controllers:</emphasis> use the
-                    <methodname>layout()</methodname> action helper, which acts just like the view
-                    helper.
+                    <emphasis>Dentro dos controladores de ação:</emphasis> use o assitente de
+                    vizualização <methodname>layout()</methodname>, que atua apenas como um
+                    assistente de vizualização.
                 </para>
 
                 <programlisting language="php"><![CDATA[
-// Calling helper as a method of the helper broker:
+// Chamando assistente como um método de corretor de ajuda.
 $layout = $this->_helper->layout();
 
-// Or, more verbosely:
+// Ou, mais detalhadamente:
 $helper = $this->_helper->getHelper('Layout');
 $layout = $helper->getLayoutInstance();
 ]]></programlisting>
 
                 <para>
-                    As with the view helper, since the action helper returns the layout instance,
-                    you can also simply call methods on it, rather than assigning it to a variable.
+                    Assim como no assitente de vizualização, desde que o assistente de ação retorne
+                    a instância layout, você pode também simplesmente chamar métodos nele, ao invés
+                    de de atribuir a ele variáveis.
                 </para>
             </listitem>
 
             <listitem>
                 <para>
-                    <emphasis>Elsewhere: </emphasis> use the static method
-                    <methodname>getMvcInstance()</methodname>. This will return the layout instance
-                    registered by the bootstrap resource.
+                    <emphasis>Em outro lugar: </emphasis> use o método estático
+                    <methodname>getMvcInstance()</methodname>. Isso retornará a instância layout
+                    registrada pelo de recurso de inicialização da aplicação.
                 </para>
 
                 <programlisting language="php"><![CDATA[
@@ -149,8 +150,8 @@ $layout = Zend_Layout::getMvcInstance();
 
             <listitem>
                 <para>
-                    <emphasis>Via the bootstrap: </emphasis> retrieve the layout resource, which
-                    will be the <classname>Zend_Layout</classname> instance.
+                    <emphasis>Via inicialização da aplicação: </emphasis> recupera o recurso layout,
+                    que será a instância <classname>Zend_Layout</classname>.
                 </para>
 
                 <programlisting language="php"><![CDATA[
@@ -158,56 +159,56 @@ $layout = $bootstrap->getResource('Layout');
 ]]></programlisting>
 
                 <para>
-                    Anywhere you have access to the bootstrap object, this method is preferred over
-                    using the static <methodname>getMvcInstance()</methodname> method.
+                    Em qualquer lugar que você tenha acesso ao objeto inicialização da aplicação,
+                    neste método é preferível usar o método estático
+                    <methodname>getMvcInstance()</methodname>.
                 </para>
             </listitem>
         </itemizedlist>
     </sect2>
 
     <sect2 id="learning.layout.usage.other-operations">
-        <title>Other Operations</title>
-
+        <title>Outras Operações</title>
         <para>
-            In most cases, the above configuration and layout script (with modifications) will get
-            you what you need. However, some other functionality exists you will likely use sooner
-            or later. In all of the following examples, you may use one of the <link
-                linkend="learning.layout.usage.access">methods listed above</link> for retrieving
-            the layout object.
+            Na maioria dos casos, a configuração acmia e o script layout (com modificações) lhe
+            darão o que você precisa. Porém, existe algumas outras funcionalidades que você
+            provavelmente vai usar mais cedo ou mais tarde. Nos exemplos seguintes, você pode usar
+            um dos <link linkend="learning.layout.usage.access">métodos listados acima</link> para
+            recuperar o objeto layout.
         </para>
 
         <itemizedlist>
             <listitem>
                 <para>
-                    <emphasis>Setting layout variables</emphasis>.
-                    <classname>Zend_Layout</classname> keeps its own registry of layout-specific
-                    view variables that you can access; the <varname>$content</varname> key noted in
-                    the initial layout script sample is one such example. You can assign and
-                    retrieve these using normal property access, or via the
-                    <methodname>assign()</methodname> method.
+                    <emphasis>Configurando vairáveis layout</emphasis>.
+                    O <classname>Zend_Layout</classname> mantém o seu próprio registro das variáveis
+                    de vizualização específico-layout que você pode acessar; a senha
+                    <varname>$content</varname> observada no exemplo de script de layout inicial é
+                    um exemplo. Você pode atribuir e recuperá-las usando acesso normal, ou via
+                    método <methodname>assign()</methodname>.
                 </para>
 
                 <programlisting language="php"><![CDATA[
-// Setting content:
+// Configuração de conteúdo:
 $layout->somekey = "foo"
 
-// Echoing that same content:
+// Imprimindo esse mesmo conteúdo:
 echo $layout->somekey; // 'foo'
 
-// Using the assign() method:
+// Usando o método assign():
 $layout->assign('someotherkey', 'bar');
 
-// Access to assign()'d variables remains the same:
+// Acesso às variáveis assign()'d permanece o mesmo:
 echo $layout->someotherkey; // 'bar'
 ]]></programlisting>
             </listitem>
 
             <listitem>
                 <para>
-                    <methodname>disableLayout()</methodname>. Occasionally, you may want to disable
-                    layouts; for example, when answering an Ajax request, or providing a RESTful
-                    representation of a resource. In these cases, you can call the
-                    <methodname>disableLayout()</methodname> method on your layout object.
+                    <methodname>disableLayout()</methodname>. Ocasionalmente, você pode querer
+                    deabilitar layouts; por exemplo, quando responder um pedido Ajax, ou fornecer
+                    uma representação RESTful de um recurso. Nesses casos, você pode chamar o método
+                    <methodname>disableLayout()</methodname> no seu objeto layout.
                 </para>
 
                 <programlisting language="php"><![CDATA[
@@ -215,29 +216,30 @@ $layout->disableLayout();
 ]]></programlisting>
 
                 <para>
-                    The opposite of this method is, of course,
-                    <methodname>enableLayout()</methodname>, which can be called at any time to
-                    re-enable layouts for the requested action.
+                    O contrário deste método é, claro, o <methodname>enableLayout()</methodname>,
+                    que pode ser chamado a qualquer hora para reabilitar layouts para a ação
+                    solicitada.
                 </para>
             </listitem>
 
             <listitem>
                 <para>
-                    <emphasis>Selecting an alternate layout</emphasis>: If you have multiple
-                    layouts for your site or application, you can select the layout to use at any
-                    time by simply calling the <methodname>setLayout()</methodname> method. Call it
-                    by specifying the name of the layout script without the file suffix.
+                    <emphasis>Selecionando um layout alternativo</emphasis>: se você possui layouts
+                    múltiplos para o seu site ou aplicação, você pode selecionar o layout a ser
+                    usado a qualquer hora simplesmente chamando o método
+                    <methodname>setLayout()</methodname>. Chame ele especificando o nome do script
+                    de layout sem o sufixo do arquivo.
                 </para>
 
                 <programlisting language="php"><![CDATA[
-// Use the layout script "alternate.phtml":
+// Use o script de layout "alternate.phtml":
 $layout->setLayout('alternate');
 ]]></programlisting>
 
                 <para>
-                    The layout script should reside in the <varname>$layoutPath</varname> directory
-                    specified in your configuration. <classname>Zend_Layout</classname> will then
-                    use this new layout when rendering.
+                    O script de layout deve encontrar-se no diretório <varname>$layoutPath</varname>
+                    especificado nas suas configurações. O <classname>Zend_Layout</classname> irá
+                    então usar esse novo layout quando renderizar.
                 </para>
             </listitem>
         </itemizedlist>
