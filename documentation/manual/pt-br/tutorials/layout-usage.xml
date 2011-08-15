@@ -118,10 +118,6 @@ resources.layout.layout = "layout"
                     <emphasis>Dentro dos controladores de ação:</emphasis> use o assitente de
                     ação <methodname>layout()</methodname>, que atua apenas como um
                     assistente de vizualização.
-
-                    <emphasis>Within action controllers:</emphasis> use the
-                    <methodname>layout()</methodname> action helper, which acts just like the view
-                    helper.
                 </para>
 
                 <programlisting language="php"><![CDATA[
