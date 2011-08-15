@@ -16,12 +16,12 @@ html:
 	@mkdir ./temp
 	@echo "Copying lang files..."
 	@mkdir ./temp/$(LANG)
-	@[ -d ./temp/en ] || cp -Rf ../trunk/documentation/manual/en/figures ./temp/$(LANG)
-	@[ -d ./temp/en ] || cp -Rf ../trunk/documentation/manual/en/module_specs ./temp/$(LANG)
-	@[ -d ./temp/en ] || cp -Rf ../trunk/documentation/manual/en/ref ./temp/$(LANG)
-	@[ -d ./temp/en ] || cp -Rf ../trunk/documentation/manual/en/tutorials ./temp/$(LANG)
-	@[ -d ./temp/en ] || cp -Rf ../trunk/documentation/manual/$(LANG) ./temp
-	@cp -Rf ../trunk/documentation/manual/en ./temp
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/figures ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/module_specs ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/ref ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/en/tutorials ./temp/$(LANG)
+	@[ -d ./temp/en ] || cp -Rf ../documentation/manual/$(LANG) ./temp
+	@cp -Rf ../documentation/manual/en ./temp
 	@( cd ./temp/$(LANG) && autoconf && ./configure && make -e $(MANUAL_XML) )
 	@echo "Executing sed on file ./temp/$(LANG)/$(MANUAL_XML)."
 	@sed -ir -e 's/<index id="the.index" \/>//' "./temp/$(LANG)/$(MANUAL_XML)"
