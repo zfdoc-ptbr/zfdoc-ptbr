@@ -116,8 +116,12 @@ resources.layout.layout = "layout"
             <listitem>
                 <para>
                     <emphasis>Dentro dos controladores de ação:</emphasis> use o assitente de
-                    vizualização <methodname>layout()</methodname>, que atua apenas como um
+                    ação <methodname>layout()</methodname>, que atua apenas como um
                     assistente de vizualização.
+
+                    <emphasis>Within action controllers:</emphasis> use the
+                    <methodname>layout()</methodname> action helper, which acts just like the view
+                    helper.
                 </para>
 
                 <programlisting language="php"><![CDATA[
@@ -132,7 +136,7 @@ $layout = $helper->getLayoutInstance();
                 <para>
                     Assim como no assitente de vizualização, desde que o assistente de ação retorne
                     a instância layout, você pode também simplesmente chamar métodos nele, ao invés
-                    de de atribuir a ele variáveis.
+                    de atribuir a ele variáveis.
                 </para>
             </listitem>
 
@@ -140,7 +144,7 @@ $layout = $helper->getLayoutInstance();
                 <para>
                     <emphasis>Em outro lugar: </emphasis> use o método estático
                     <methodname>getMvcInstance()</methodname>. Isso retornará a instância layout
-                    registrada pelo de recurso de inicialização da aplicação.
+                    registrada pelo recurso de inicialização da aplicação.
                 </para>
 
                 <programlisting language="php"><![CDATA[
@@ -150,7 +154,7 @@ $layout = Zend_Layout::getMvcInstance();
 
             <listitem>
                 <para>
-                    <emphasis>Via inicialização da aplicação: </emphasis> recupera o recurso layout,
+                    <emphasis>Via inicialização da aplicação:</emphasis> recupera o recurso layout,
                     que será a instância <classname>Zend_Layout</classname>.
                 </para>
 
@@ -182,7 +186,7 @@ $layout = $bootstrap->getResource('Layout');
                 <para>
                     <emphasis>Configurando vairáveis layout</emphasis>.
                     O <classname>Zend_Layout</classname> mantém o seu próprio registro das variáveis
-                    de vizualização específico-layout que você pode acessar; a senha
+                    de visualização específicas de layout que você pode acessar; a chave
                     <varname>$content</varname> observada no exemplo de script de layout inicial é
                     um exemplo. Você pode atribuir e recuperá-las usando acesso normal, ou via
                     método <methodname>assign()</methodname>.
@@ -206,7 +210,7 @@ echo $layout->someotherkey; // 'bar'
             <listitem>
                 <para>
                     <methodname>disableLayout()</methodname>. Ocasionalmente, você pode querer
-                    deabilitar layouts; por exemplo, quando responder um pedido Ajax, ou fornecer
+                    desabilitar layouts; por exemplo, quando responder um pedido Ajax, ou fornecer
                     uma representação RESTful de um recurso. Nesses casos, você pode chamar o método
                     <methodname>disableLayout()</methodname> no seu objeto layout.
                 </para>
