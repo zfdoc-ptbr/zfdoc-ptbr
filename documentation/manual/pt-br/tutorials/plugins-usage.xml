@@ -8,7 +8,7 @@
         Componentes que fazem uso de plugins normalmente utilizam
         <classname>Zend_Loader_PluginLoader</classname>. Essa classe permite que você registre 
         plugins especificando um ou mais "caminhos prefixados". O componente irá chamar ao método
-        de PluginLoader <methodname>load()<methodname />, passando o nome abreviado do plugin. 
+        de PluginLoader <methodname>load()</methodname>, passando o nome abreviado do plugin. 
         O PluginLoader irá consultar cada caminho prefixado para saber se existe uma classe 
         correspondente. Os caminhos prefixados são procurados na ordem LIFO (last in, first 
         out - último a entrar, primeiro a sair), e com isso, as correspondências ocorrerão 
