@@ -481,49 +481,49 @@ private function getContactHandler(event:ResultEvent):void {
         <title>Recursos</title>
 
         <para>
-            <classname>Zend_Amf</classname> fornece ferramenta para mapear tipos de recursos
+            <classname>Zend_Amf</classname> fornece ferramentas para mapear tipos de recursos
             retornados por classes de serviços em informações consumíveis pelo ActionScript.
         </para>
 
         <para>
-            In order to handle specific resource type, the user needs to create a plugin class named
-            after the resource name, with words capitalized and spaces removed (so, resource
-            type "mysql result" becomes MysqlResult), with some prefix, e.g.
-            <classname>My_MysqlResult</classname>. This class should implement one method,
-            <methodname>parse()</methodname>, receiving one argument - the resource - and returning
-            the value that should be sent to ActionScript. The class should be located in the file
-            named after the last component of the name, e.g. <filename>MysqlResult.php</filename>.
+            A fim de lidar com tipo de recurso específico, o usuário precisa criar uma classe plugin
+            chamado após o nome do recurso, com palavras em maiúsculas e espaços removidos (assim
+            recurso do tipo "resultado mysql" torna-se ResultadoMysql), com algum prefixo, ex.:
+            <classname>Meu_ResultadoMysql</classname>. Esta classe precisa implementar um método,
+            <methodname>parse()</methodname>, recebendo um argumento - o recurso - e retornando o
+            valor a ser enviado para o ActionScript. A classe deve estar localizada no arquivo
+            chamado após o nome do componente, ex.: <filename>ResultadoMysql.php</filename>.
         </para>
 
         <para>
-            The directory containing the resource handling plugins should be registered with
-            <classname>Zend_Amf</classname> type loader:
+            O diretório contendo os plugins para manipulação de recursos devem ser registrados com o
+            carregador de tipo <classname>Zend_Amf</classname>:
         </para>
 
         <programlisting language="php"><![CDATA[
 Zend_Amf_Parse_TypeLoader::addResourceDirectory(
-    "My",
-    "application/library/resources/My"
+    "Meu",
+    "application/library/recursos/Meu"
 );
 ]]></programlisting>
 
         <para>
-            For detailed discussion of loading plugins, please see
-            the <link linkend="zend.loader.pluginloader">plugin loader</link> section.
+            Para uma discussão detalhada sobre o plugins carregadores, por favor veja a seção
+            <link linkend="zend.loader.pluginloader">plugin carregador</link>.
         </para>
 
         <para>
-            Default directory for <classname>Zend_Amf</classname> resources is registered
-            automatically and currently contains handlers for "mysql result" and "stream"
-            resources.
+            O diretório padrão para recursos <classname>Zend_Amf</classname> é registrado
+            automaticamente e atualmente contém manipuladores para recursos "resultado mysql" e
+            "stream".
         </para>
 
         <programlisting language="php"><![CDATA[
-// Example class implementing handling resources of type mysql result
-class Zend_Amf_Parse_Resource_MysqlResult
+// Classe de exemplo implementando a manipulação de recursos do tipo "resultado mysql"
+class Zend_Amf_Parse_Recurso_ResultadoMysql
 {
     /**
-     * Parse resource into array
+     * Decodifica o recurso em uma matriz
      *
      * @param resource $resource
      * @return array
@@ -539,40 +539,42 @@ class Zend_Amf_Parse_Resource_MysqlResult
 ]]></programlisting>
 
         <para>
-            Trying to return unknown resource type (i.e., one for which no handler plugin exists)
-            will result in an exception.
+            Ao tentar retornar um tipo desconhecido de recirso (ex., um para o qual não haja plugin
+            manipulador existente) resultará em uma exceção.
         </para>
     </sect2>
 
     <sect2 id="zend.amf.server.flash">
-        <title>Connecting to the Server from Flash</title>
+        <title>Conectando ao Servidor a partir do Flash</title>
 
         <para>
-            Connecting to your <classname>Zend_Amf_Server</classname> from your Flash project is
-            slightly different than from Flex. However once the connection Flash functions with
-            <classname>Zend_Amf_Server</classname> the same way is flex. The following example can
-            also be used from a Flex <acronym>AS3</acronym> file. We will reuse the same
-            <classname>Zend_Amf_Server</classname> configuration along with the World class for our
-            connection.
+            Conectando ao seu <classname>Zend_Amf_Server</classname> a partir de seu projeto Flash é
+            ligeiramente diferente do que com Flex. Contudo, depois da conexão, Flash funciona com
+            <classname>Zend_Amf_Server</classname> da mesma forma que com Flex. O exemplo a seguir
+            também pode ser usado com um arquivo <acronym>AS3</acronym> do Flex. Reutilizaremos a
+            mesma configuração <classname>Zend_Amf_Server</classname> com a classe Mundo para nossa
+            conexão.
         </para>
 
         <para>
-            Open Flash CS and create and new Flash File (ActionScript 3). Name the document
-            <filename>ZendExample.fla</filename> and save the document into a folder that you will
-            use for this example. Create a new <acronym>AS3</acronym> file in the same directory
-            and call the file <filename>Main.as</filename>. Have both files open in your editor. We
-            are now going to connect the two files via the document class. Select ZendExample and
-            click on the stage. From the stage properties panel change the Document class to Main.
-            This links the <filename>Main.as</filename> ActionScript file with the user interface
-            in <filename>ZendExample.fla</filename>. When you run the Flash file ZendExample the
-            <filename>Main.as</filename> class will now be run. Next we will add ActionScript to
-            make the <acronym>AMF</acronym> call.
+            Abra o Flash CS e crie um novo arquivo Flash (ActionScript 3). Nomeie o documento
+            <filename>ExemploZend.fla</filename> e salve o documento em uma pasta que você usará
+            para este exemplo. Crie uma nova classe <acronym>AS3</acronym> no mesmo diretório e
+            nomeie o arquivo como <filename>Principal.as</filename>. Tenha ambos os arquivos abertos
+            em seu editor. Vamos conectar os dois arquivos através da classe de documento. Selecione
+            ExemploZend e clique no palco. No painel de propriedade dos palco, altere a classe de
+            documento (Document class) para Principal. Isso ligará o arquivo ActionScript 
+            <filename>Principal.as</filename> com a interface do usuário do arquivo
+            <filename>ExemploZend.fla</filename>. Quando você executa o arquivo Flash ExemploZend, a
+            classe <filename>Principal.as</filename> será executada agora. Agora, vamos adicionar o
+            código ActionScript para fazer a chamada <acronym>AMF</acronym>.
         </para>
 
         <para>
-            We now are going to make a Main class so that we can send the data to the server and
-            display the result. Copy the following code into your <filename>Main.as</filename> file
-            and then we will walk through the code to describe what each element's role is.
+            Agora nós faremos a classe Principal de modo que possamos enviar dados ao servidor e
+            exibir o resultado. Copie o código a seguir para seu arquivo
+            <filename>Principal.as</filename> e depois vamos descrever, passo a passo, o papel de
+            cada elemento nele.
         </para>
 
         <programlisting language="as"><![CDATA[
@@ -582,20 +584,23 @@ package {
   import flash.net.NetConnection;
   import flash.net.Responder;
 
-  public class Main extends MovieClip {
-    private var gateway:String = "http://example.com/server.php";
+  public class Principal extends MovieClip {
+    private var gateway:String = "http://exemplo.com/server.php";
     private var connection:NetConnection;
     private var responder:Responder;
 
-    public function Main() {
+    public function Principal() {
       responder = new Responder(onResult, onFault);
       connection = new NetConnection;
+      connection.addEventListener(NetStatusEvent.NET_STATUS, onComplete);
       connection.connect(gateway);
     }
 
-    public function onComplete( e:Event ):void{
-      var params = "Sent to Server";
-      connection.call("World.hello", responder, params);
+    public function onComplete( e:NetStatusEvent ):void {
+      if(e.info.code == "NetGroup.Connect.Succcess") {
+        var params = "Sent to Server";
+        connection.call("Mundo.alo", responder, params);
+      }
     }
 
     private function onResult(result:Object):void {
@@ -610,10 +615,10 @@ package {
 ]]></programlisting>
 
         <para>
-            We first need to import two ActionScript libraries that perform the bulk of the work.
-            The first is NetConnection which acts like a by directional pipe between the client and
-            the server. The second is a Responder object which handles the return values from the
-            server related to the success or failure of the call.
+            Primeiro precisamos importar duas bibliotecas ActionScriot que executam a maior parte do
+            trabalho. A primeira é NetConnection que atua como um tubo bi-direcional entre o cliente
+            e o servidor. A segunda é o objeto Responder, que manipula os valores de retorno do
+            servidor relacionados ao sucesso ou falha da chamada.
         </para>
 
         <programlisting language="as"><![CDATA[
@@ -622,59 +627,60 @@ import flash.net.Responder;
 ]]></programlisting>
 
         <para>
-            In the class we need three variables to represent the NetConnection, Responder, and
-            the gateway <acronym>URL</acronym> to our <classname>Zend_Amf_Server</classname>
-            installation.
+            Na classe, precisamos de três variáveis para representar a NetConnection, Responder e a
+            <acronym>URL</acronym> da porta de entrada (gateway) para nossa instalação
+            <classname>Zend_Amf_Server</classname>.
         </para>
 
         <programlisting language="as"><![CDATA[
-private var gateway:String = "http://example.com/server.php";
+private var gateway:String = "http://exemplo.com/server.php";
 private var connection:NetConnection;
 private var responder:Responder;
 ]]></programlisting>
 
         <para>
-            In the Main constructor we create a responder and a new connection to the
-            <classname>Zend_Amf_Server</classname> endpoint. The responder defines two different
-            methods for handling the response from the server. For simplicity I have called these
-            onResult and onFault.
+            No contrutor de Principal criamos um respondedor e uma nova conexão ao
+            ponto de extremidade (gateway) <classname>Zend_Amf_Server</classname>. O respondedor
+            define dois métodos diferentes para manipular as respostas do servidor. Por simplicidade
+            eles foram chamados de onResult e onFault.
         </para>
 
         <programlisting language="as"><![CDATA[
 responder = new Responder(onResult, onFault);
 connection = new NetConnection;
+connection.addEventListener(NetStatusEvent.NET_STATUS, onComplete);
 connection.connect(gateway);
 ]]></programlisting>
 
         <para>
-            In the onComplete function which is run as soon as the construct has completed we send
-            the data to the server. We need to add one more line that makes a call to the
-            <classname>Zend_Amf_Server</classname> World->hello function.
+            Na função onComplete, que é executada assim que o construtor tenha sido terminado, nós
+            enviamos dados ao servidor. Precisamos adicionar mais uma linha que realiza a chamada a
+            função Mundo->alo do <classname>Zend_Amf_Server</classname>
         </para>
 
         <programlisting language="as"><![CDATA[
-connection.call("World.hello", responder, params);
+connection.call("Mundo.alo", responder, params);
 ]]></programlisting>
 
         <para>
-            When we created the responder variable we defined an onResult and onFault function to
-            handle the response from the server. We added this function for the successful result
-            from the server. A successful event handler is run every time the connection is handled
-            properly to the server.
+            Quando instanciamos a variável responder, definimos uma função onResult e onFault para
+            manipular a resposta do servidor. Adicionamos esta função para um resultado de sucesso
+            vindo do servidor. Um manipulador de eventos de sucesso é executado sempre que uma
+            conexão  é manipulada apropriadamente no servidor.
         </para>
 
         <programlisting language="as"><![CDATA[
 private function onResult(result:Object):void {
-    // Display the returned data
+    // Mostra os dados retornados
     trace(String(result));
 }
 ]]></programlisting>
 
         <para>
-            The onFault function, is called if there was an invalid response from the server. This
-            happens when there is an error on the server, the <acronym>URL</acronym> to the server
-            is invalid, the remote service or method does not exist, and any other connection
-            related issues.
+            A função onFault é chamada se há uma resposta inválida vinda do servidor. Isso acontece
+            quando há um erro no servidor, a <acronym>URL</acronym> para o servidor é inválida, o
+            serviço remoto ou método não existe ou se há qualquer outro problema relacionado à
+            conexão. 
         </para>
 
         <programlisting language="as"><![CDATA[
@@ -684,11 +690,12 @@ private function onFault(fault:Object):void {
 ]]></programlisting>
 
         <para>
-            Adding in the ActionScript to make the remoting connection is now complete. Running the
-            ZendExample file now makes a connection to <classname>Zend_Amf</classname>. In review
-            you have added the required variables to open a connection to the remote server, defined
-            what methods should be used when your application receives a response from the server,
-            and finally displayed the returned data to output via <methodname>trace()</methodname>.
+            Completamos então a inclusão do ActionScript para realizar a conexão remota. Executando
+            o arquivo ExemploZend agora faz a conexão ao <classname>Zend_Amf</classname>. Numa
+            revisão, você adicionou as variáveis necessárias para abrir uma conexão ao servidor
+            remoto, definiu quais métodos devem ser usados em sua aplicação para receber respostas
+            do servidor e finalmente exibido os dados retornados através da função
+            <methodname>trace()</methodname>. 
         </para>
     </sect2>
 
@@ -696,7 +703,7 @@ private function onFault(fault:Object):void {
         <title>Authentication</title>
 
         <para>
-            <classname>Zend_Amf_Server</classname> allows you to specify authentication and
+            <classname>Zend_Amf_Server</classname> allows you to specify authentication and 
             authorization hooks to control access to the services. It is using the infrastructure
             provided by <link linkend="zend.auth"><classname>Zend_Auth</classname></link> and
             <link linkend="zend.acl"><classname>Zend_Acl</classname></link> components.
