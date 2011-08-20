@@ -700,43 +700,45 @@ private function onFault(fault:Object):void {
     </sect2>
 
     <sect2 id="zend.amf.server.auth">
-        <title>Authentication</title>
+        <title>Autenticação</title>
 
         <para>
-            <classname>Zend_Amf_Server</classname> allows you to specify authentication and 
-            authorization hooks to control access to the services. It is using the infrastructure
-            provided by <link linkend="zend.auth"><classname>Zend_Auth</classname></link> and
-            <link linkend="zend.acl"><classname>Zend_Acl</classname></link> components.
+            <classname>Zend_Amf_Server</classname> permite que você especifique ganchos de
+            autentcação e autorização para controlar acesso aos serviços. Isso é feito usando a
+            infraestrutura fornecida pelos componentes
+            <link linkend="zend.auth"><classname>Zend_Auth</classname></link> e
+            <link linkend="zend.acl"><classname>Zend_Acl</classname></link>.
         </para>
 
         <para>
-            In order to define authentication, the user provides authentication adapter extening
-            <classname>Zend_Amf_Auth_Abstract</classname> abstract class. The adapter should
-            implement the <methodname>authenticate()</methodname> method just like regular
-            <link linkend="zend.auth.introduction.adapters">authentication adapter</link>.
+            Para definir autenticação, o usuário fornece um adaptador de autenticação extendendo a
+            classe abstrata <classname>Zend_Amf_Auth_Abstract</classname>. O adaptador deve
+            implementar o método <methodname>authenticate()</methodname> como qualquer outro
+            <link linkend="zend.auth.introduction.adapters">adaptador de autenticação</link>.
         </para>
 
         <para>
-            The adapter should use properties <emphasis>_username</emphasis> and
-            <emphasis>_password</emphasis> from the parent
-            <classname>Zend_Amf_Auth_Abstract</classname> class in order to authenticate. These
-            values are set by the server using <methodname>setCredentials()</methodname> method
-            before call to <methodname>authenticate()</methodname> if the credentials are received
-            in the <acronym>AMF</acronym> request headers.
+            O adaptador deve utilizar as propriedades <emphasis>_username</emphasis> e
+            <emphasis>_password</emphasis> da classe pai, 
+            <classname>Zend_Amf_Auth_Adapter</classname>, para autenticar. Estes valores são
+            definidos pelo servidor usando o método <methodname>setCredentials()</methodname> antes
+            da chamada à <methodname>authenticate()</methodname> se as credenciais forem recebidas
+            nos cabeçalhos da requisição <acronym>AMF</acronym>.
         </para>
 
         <para>
-            The identity returned by the adapter should be an object containing property
-            <property>role</property> for the <acronym>ACL</acronym> access control to work.
+            A identidade retornada pelo adaptador deve ser um objeto contendo a propriedade
+            <property>role</property> para que o controle de acesso da <acronym>ACL</acronym>
+            funcione.
         </para>
 
         <para>
-            If the authentication result is not successful, the request is not proceseed further
-            and failure message is returned with the reasons for failure taken from the result.
+            Se o resultado da autenticação não for bem sucedido, a requisição não é mais procesada e
+            uma mensagem de falha é retornada contendo as razões da falha obtida do resultado.
         </para>
 
         <para>
-            The adapter is connected to the server using <methodname>setAuth()</methodname> method:
+            O adaptador é conectado ao servidor usando o método <methodname>setAuth()</methodname>:
         </para>
 
         <programlisting language="php"><![CDATA[
@@ -744,31 +746,31 @@ $server->setAuth(new My_Amf_Auth());
 ]]></programlisting>
 
         <para>
-            Access control is performed by using <classname>Zend_Acl</classname> object set by
-            <methodname>setAcl()</methodname> method:
+            O controle de acesso é realizado usando um objeto <classname>Zend_Acl</classname>
+            definido pelo método <methodname>setAcl()</methodname>:
         </para>
 
         <programlisting language="php"><![CDATA[
 $acl = new Zend_Acl();
-createPermissions($acl); // create permission structure
+criarPermissoes($acl); // Cria a estrutura de permissões
 $server->setAcl($acl);
 ]]></programlisting>
 
         <para>
-            If the <acronym>ACL</acronym> object is set, and the class being called defines
-            <methodname>initAcl()</methodname> method, this method will be called with the
-            <acronym>ACL</acronym> object as an argument. The class then can create additional
-            <acronym>ACL</acronym> rules and return <constant>TRUE</constant>, or return
-            <constant>FALSE</constant> if no access control is required for this class.
+            Se o objeto <acronym>ACL</acronym> é definido e a classe sendo chamada define o método
+            <methodname>initAcl()</methodname>, este método será chamado com o objeto
+            <acronym>ACL</acronym> como um argumento. A classe depois cria regras
+            <acronym>ACL</acronym> adicionais e retorna <constant>TRUE</constant>, ou retorna
+            <constant>FALSE</constant> se nenhum controle de acesso for necessário para esta classe.
         </para>
 
         <para>
-            After <acronym>ACL</acronym> have been set up, the server will check if access is
-            allowed with role set by the authentication, resource being the class name (or
-            <constant>NULL</constant> for
-            function calls) and privilege being the function name. If no authentication was
-            provided, then if the <emphasis>anonymous</emphasis> role was defined, it will be used,
-            otherwise the access will be denied.
+            Depois de a <acronym>ACL</acronym> ser definida, o servidor verificará se o acesso é
+            permitido com o papel definido pela autenticação, sendo o recurso o nome da classe (ou
+            <constant>NULL</constant> para chamadas de funções) e o privileǵio sendo o nome da
+            função. Se nenhuma autenticação for fornecida, e se o papel
+            <emphasis>anonymous</emphasis> foi definido, ele será usado, em outro caso o acesso será
+            negado.
         </para>
 
         <programlisting language="php"><![CDATA[
@@ -776,7 +778,7 @@ if($this->_acl->isAllowed($role, $class, $function)) {
     return true;
 } else {
     require_once 'Zend/Amf/Server/Exception.php';
-    throw new Zend_Amf_Server_Exception("Access not allowed");
+    throw new Zend_Amf_Server_Exception("Accesso não permitido");
 }
 ]]></programlisting>
     </sect2>
