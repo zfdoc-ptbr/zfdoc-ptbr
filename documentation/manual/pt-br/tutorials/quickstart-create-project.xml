@@ -116,13 +116,6 @@ quickstart
 ]]></programlisting>
 
         <para>
-            At this point, if you haven't added Zend Framework to your
-            <constant>include_path</constant>, we recommend either copying or symlinking it into
-            your <filename>library/</filename> directory. In either case, you'll want to either
-            recursively copy or symlink the <filename>library/Zend/</filename> directory of your
-            Zend Framework installation into the <filename>library/</filename> directory of your
-            project. On unix-like systems, that would look like one of the following:
-
             Até este ponto, se você não adicionou o Zend Framework para o seu
             <constant>include_path</constant>, nós recomendamos também copiar ou criar um link
             simbólico em seu diretório <filename>library/</filename>. Em qualquer caso, você vai
@@ -180,13 +173,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         <title>Configuração</title>
 
         <para>
-            While Zend Framework is itself configurationless, you often need to configure your
-            application. The default configuration is placed in
-            <filename>application/configs/application.ini</filename>, and contains some basic
-            directives for setting your <acronym>PHP</acronym> environment (for instance, turning
-            error reporting on and off), indicating the path to your bootstrap class (as well as its
-            class name), and the path to your action controllers. It looks as follows:
-
             Enquanto o Zend Framework é em si configuração, muitas vezes você precisa configurar
             sua aplicação. A configuração padrão está localizada em
             <filename>application/configs/application.ini</filename>, e contém algumas diretrizes
