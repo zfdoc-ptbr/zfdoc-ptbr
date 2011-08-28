@@ -37,7 +37,7 @@
         </para>
 
         <programlisting language="php"><![CDATA[
-// use a model to get the data for book authors and titles.
+// use um modelo para obter os dados para autores e títulos de livros.
 $data = array(
     array(
         'author' => 'Hernando de Soto',
@@ -53,12 +53,12 @@ $data = array(
     )
 );
 
-// now assign the book data to a Zend_View instance
+// agora atribua os dados do livro a uma instância Zend_View
 Zend_Loader::loadClass('Zend_View');
 $view = new Zend_View();
 $view->books = $data;
 
-// and render a view script called "booklist.php"
+// e renderize um script de visualização chamado "booklist.php"
 echo $view->render('booklist.php');
 ]]></programlisting>
     </sect2>
@@ -109,19 +109,19 @@ echo $view->render('booklist.php');
     </sect2>
 
     <sect2 id="zend.view.introduction.options">
-        <title>Options</title>
+        <title>Opções</title>
 
         <para>
-            <classname>Zend_View</classname> has several options that may be set to
-            configure the behaviour of your view scripts.
+            <classname>Zend_View</classname> possui diversas opções que podem ser definidas para
+            configurar o comportamento de seus scripts de visualização.
         </para>
 
         <itemizedlist>
             <listitem>
                 <para>
-                    <property>basePath</property>: indicate a base path from which to set
-                    the script, helper, and filter path. It assumes a directory
-                    structure of:
+                    <property>basePath</property>: indica o caminho base na qual será definido os
+                    caminhos dos scripts, assistentes e filtros. Ele assume uma estrutura de
+                    diretórios de:
                 </para>
 
                 <programlisting language="php"><![CDATA[
@@ -132,20 +132,19 @@ base/path/
 ]]></programlisting>
 
                 <para>
-                    This may be set via <methodname>setBasePath()</methodname>,
-                    <methodname>addBasePath()</methodname>, or the <property>basePath</property>
-                    option to the constructor.
+                    Isto pode ser definido via <methodname>setBasePath()</methodname>,
+                    <methodname>addBasePath()</methodname> ou a opção <property>basePath</property>
+                    para o construtor.
                 </para>
             </listitem>
 
             <listitem>
                 <para>
-                    <property>encoding</property>: indicate the character encoding to use
-                    with <methodname>htmlentities()</methodname>,
-                    <methodname>htmlspecialchars()</methodname>, and other operations. Defaults
-                    to UTF-8. May be set via
-                    <methodname>setEncoding()</methodname> or the <property>encoding</property>
-                    option to the constructor.
+                    <property>encoding</property>: indica a codificação de caracteres para usar com
+                    <methodname>htmlentities()</methodname>,
+                    <methodname>htmlspecialchars()</methodname>, e outras operações. O padrão é
+                    UTF-8. Pode ser definido através <methodname>setEncoding()</methodname> ou a
+                    opção <property>encoding</property> para o construtor.
                 </para>
             </listitem>
 
