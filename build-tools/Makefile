@@ -39,6 +39,8 @@ html:
 	@[ -d ./output/manual/index.html ] || mv -f ./output/manual/index.html.in ./output/manual/index.html
 	@[ -d ./output/manual/css ] || cp -Rf ./css ./output/manual
 	@[ -d ./output/manual/js ] || cp -Rf ./js ./output/manual
+	@rm -Rf ./output/manual/css/.svn
+	@rm -Rf ./output/manual/js/.svn
 
 clean:
 	@rm -Rf ./temp
